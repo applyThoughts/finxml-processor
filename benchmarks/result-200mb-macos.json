@@ -1,0 +1,26 @@
+{
+  "outcome": "CompletedWithWarnings",
+  "inputBytes": 209871897,
+  "elapsedSeconds": 19.5,
+  "throughputMBps": 10.27,
+  "recordsPerSecond": 15337,
+  "peakWorkingSetMB": 126.2,
+  "peakManagedHeapMB": 12.2,
+  "totalAllocatedMB": 3505.4,
+  "gen0": 586,
+  "gen1": 2,
+  "gen2": 1,
+  "counts": {
+    "RecordsSeen": 299008,
+    "RecordsAccepted": 293447,
+    "RecordsRejected": 5561,
+    "RecordDuplicates": 1359,
+    "RowsWritten": 293447,
+    "WarningCount": 0
+  },
+  "output": "benchmarks/out/demo-fintech-v1_2026-09-04_c9943adf.xlsx",
+  "outputBytes": 13840970,
+  "platform": "macOS 26.5.2 (Arm64)",
+  "version": "0.1.0\u002Bc09c92dfce900c46a3aed4383be4996379159943",
+  "timestampUtc": "2026-09-04T05:35:45.187351+00:00"
+}

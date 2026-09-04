@@ -31,11 +31,23 @@ An earlier run with the OpenXml SDK package writer on the data path measured 650
 peak managed heap for the same input; the SDK's package layer buffers each worksheet part in memory. The writer was
 changed to stream through a create-mode zip (see `docs/architecture.md`), which produced the numbers above.
 
+## 200 MB synthetic file, GitHub-hosted Apple Silicon runner (macOS)
+
+Same input and command, run by the manual "200 MB benchmark" job in `macos-artifacts.yml`
+(`result-200mb-macos.json`, macOS 26.5, Arm64, .NET 10, 2026-09-04):
+
+| Metric | Value |
+| --- | --- |
+| Elapsed | 19.5 s (10.27 MB/s, 15,337 records/s) |
+| Peak working set | 126 MB |
+| Peak managed heap | 12 MB |
+| Total allocated (churn) | 3.5 GB, GC gen0/1/2 = 586/2/1 |
+| Counts | identical to the Windows run (299,008 seen; 293,447 accepted; 5,561 rejected; 1,359 duplicates) |
+
 ## Provisional acceptance targets (Apple Silicon, 8 GB)
 
-- 200 MB completes without out-of-memory failure: **met on Windows; run the manual macOS benchmark job in
-  `macos-artifacts.yml` to record the Mac figure** (`result-200mb-macos.json` is produced by that job).
-- Peak working set below 512 MB: met (100 MB).
+- 200 MB completes without out-of-memory failure: met on Windows and on an Apple Silicon macOS runner.
+- Peak working set below 512 MB: met (100 MB on Windows, 126 MB on macOS).
 - No collection grows with record count: guarded by the integration test `Memory_stays_bounded_for_a_generated_dataset`
   (30 MB in CI; set `FINXML_LARGE_BENCH_BYTES=209715200` to run it at 200 MB locally).
-- Ten minutes is a warning threshold, not a contract; observed runtime is 20 s.
+- Ten minutes is a warning threshold, not a contract; observed runtime is about 20 s on both platforms.

@@ -56,6 +56,7 @@ dotnet_diagnostic.CA1308.severity = none   # ToLowerInvariant for normalization 
 dotnet_diagnostic.CA1861.severity = none   # constant arrays as arguments
 dotnet_diagnostic.CA1024.severity = none   # use properties where appropriate
 dotnet_diagnostic.CA1063.severity = none   # dispose pattern
+dotnet_diagnostic.CA1001.severity = none   # singleton services owning a SemaphoreSlim live for the process
 dotnet_diagnostic.CA1816.severity = none
 dotnet_diagnostic.CA1040.severity = none   # empty interfaces
 dotnet_diagnostic.CA1707.severity = none

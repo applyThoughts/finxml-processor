@@ -10,4 +10,8 @@
     <ProjectReference Include="../FinXmlProcessor.Infrastructure/FinXmlProcessor.Infrastructure.csproj" />
     <PackageReference Include="System.CommandLine" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="../../samples/profiles/*.json" Link="samples/profiles/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../samples/input/demo-transactions.xml" Link="samples/input/demo-transactions.xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

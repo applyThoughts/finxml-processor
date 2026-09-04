@@ -1,0 +1,104 @@
+name: macOS artifacts (unsigned test builds)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "scripts/macos/**"
+      - "samples/**"
+      - "Directory.*.props"
+      - "global.json"
+      - ".github/workflows/macos-artifacts.yml"
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: "1"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+
+jobs:
+  bundle:
+    name: Build ${{ matrix.rid }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rid: osx-arm64
+            runner: macos-latest       # Apple Silicon runner
+          - rid: osx-x64
+            runner: macos-15-intel     # Intel runner (GitHub-hosted large/legacy Intel image)
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+
+      - name: Restore (locked)
+        run: dotnet restore FinXmlProcessor.sln --locked-mode
+
+      - name: Build app bundle
+        run: |
+          chmod +x scripts/macos/*.sh
+          scripts/macos/build-app.sh ${{ matrix.rid }} artifacts
+
+      - name: Launch smoke test (headless-safe)
+        run: |
+          # The desktop binary must start and exit cleanly when asked for nothing; a crash here means a broken bundle.
+          export FINXML_HOME="$(mktemp -d)"
+          timeout 20 "artifacts/${{ matrix.rid }}/FinXml Processor.app/Contents/MacOS/FinXmlProcessor.Desktop" || code=$?
+          if [ "${code:-0}" != "0" ] && [ "${code:-0}" != "124" ]; then echo "::error::desktop app exited with $code"; exit 1; fi
+          echo "Desktop app launched (exit ${code:-0})."
+
+      - name: Label as unsigned test build
+        run: |
+          cat > "artifacts/${{ matrix.rid }}/README-UNSIGNED-TEST-BUILD.txt" <<'EOF'
+          This is an UNSIGNED TEST BUILD produced without Apple signing credentials.
+          macOS Gatekeeper will block it by default. For internal testing only:
+            1. Unzip, move "FinXml Processor.app" to /Applications.
+            2. Right-click the app > Open > Open (once), or run:
+               xattr -dr com.apple.quarantine "/Applications/FinXml Processor.app"
+          Do not distribute unsigned builds to production users. See docs/release.md.
+          EOF
+
+      - name: Upload
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: finxml-processor-${{ matrix.rid }}-unsigned
+          path: |
+            artifacts/${{ matrix.rid }}/*.zip
+            artifacts/${{ matrix.rid }}/*.sha256
+            artifacts/${{ matrix.rid }}/README-UNSIGNED-TEST-BUILD.txt
+          retention-days: 30
+
+  large-benchmark:
+    name: 200 MB benchmark (manual)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+      - name: Build
+        run: dotnet build FinXmlProcessor.sln -c Release
+      - name: Generate and process 200 MB
+        run: |
+          mkdir -p benchmarks/out
+          dotnet run --project tools/FinXmlProcessor.TestDataGenerator -c Release --no-build -- --output benchmarks/synthetic-200mb.xml --approx-size 200MB --seed 2026 --missing-rate 0.005 --invalid-date-rate 0.003 --invalid-decimal-rate 0.003 --duplicate-rate 0.005 --special-rate 0.02 --long-field-rate 0.001 --invalid-status-rate 0.002
+          export FINXML_HOME="$(mktemp -d)"
+          dotnet src/FinXmlProcessor.Worker/bin/Release/net10.0/finxml.dll benchmark --input benchmarks/synthetic-200mb.xml --output benchmarks/out --result benchmarks/result-200mb-macos.json --quiet
+          cat benchmarks/result-200mb-macos.json
+      - name: Upload benchmark result
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-200mb-macos
+          path: benchmarks/result-200mb-macos.json

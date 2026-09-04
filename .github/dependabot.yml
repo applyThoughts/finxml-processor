@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      microsoft-extensions:
+        patterns: ["Microsoft.Extensions.*", "Microsoft.Data.Sqlite*"]
+      avalonia:
+        patterns: ["Avalonia*"]
+      tests:
+        patterns: ["xunit*", "coverlet*", "NSubstitute", "Microsoft.NET.Test.Sdk"]
+    ignore:
+      # FluentAssertions 8+ is commercially licensed for non-personal use; stay on the Apache 2.0 7.x line.
+      - dependency-name: FluentAssertions
+        versions: [">=8.0.0"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

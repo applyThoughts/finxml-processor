@@ -4,6 +4,8 @@
     <AssemblyName>finxml</AssemblyName>
     <RootNamespace>FinXmlProcessor.Worker</RootNamespace>
     <SelfContained>false</SelfContained>
+    <!-- Keeps the lock files complete for the macOS publish RIDs used by CI (locked-mode restore). -->
+    <RuntimeIdentifiers>osx-arm64;osx-x64</RuntimeIdentifiers>
     <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
   <ItemGroup>

@@ -18,7 +18,7 @@ public class PipelineIntegrationTests
         await host.InitializeAsync();
         string output = Path.Combine(host.Root, "out");
         var progress = new List<ProcessingProgress>();
-        ProcessingResult result = await host.Get<ProcessingPipeline>().RunAsync(new ProcessingRequest(TestHost.DemoInputPath, OutputDirectory: output, Trigger: "test"), new Progress<ProcessingProgress>(progress.Add), CancellationToken.None);
+        ProcessingResult result = await host.Get<ProcessingPipeline>().RunAsync(new ProcessingRequest(TestHost.DemoInputPath, OutputDirectory: output, Trigger: "test"), new SyncProgress<ProcessingProgress>(progress.Add), CancellationToken.None);
 
         result.Outcome.Should().Be(ProcessingOutcome.CompletedWithWarnings, result.SanitizedMessage);
         ProcessingJob job = result.Job!;
@@ -145,7 +145,8 @@ public class PipelineIntegrationTests
         SyntheticDataGenerator.GenerateFile(input, new GeneratorOptions { Records = 20_000, Indent = false });
         string output = Path.Combine(host.Root, "out");
         using var cts = new CancellationTokenSource();
-        var progress = new Progress<ProcessingProgress>(p =>
+        // Synchronous so the cancel fires on the processing thread, before the test disposes the token source.
+        var progress = new SyncProgress<ProcessingProgress>(p =>
         {
             if (p.RecordsSeen > 500)
             {
@@ -232,5 +233,28 @@ public class PipelineIntegrationTests
         a.IsSuccess.Should().BeTrue();
         b.IsSuccess.Should().BeTrue();
         b.Job!.Counts.Should().Be(a.Job!.Counts);
+    }
+}
+
+/// <summary>
+/// Unlike <see cref="Progress{T}"/>, which posts callbacks to the thread pool when no synchronization context
+/// exists, this reporter runs the handler inline so tests observe every report in order and before the run returns.
+/// </summary>
+internal sealed class SyncProgress<T> : IProgress<T>
+{
+    private readonly Action<T> _handler;
+    private readonly object _gate = new();
+
+    public SyncProgress(Action<T> handler)
+    {
+        _handler = handler;
+    }
+
+    public void Report(T value)
+    {
+        lock (_gate)
+        {
+            _handler(value);
+        }
     }
 }

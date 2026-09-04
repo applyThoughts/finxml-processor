@@ -10,7 +10,7 @@ public static class AppInfo
     public const string ShortName = "FinXmlProcessor";
     public const string BundleIdentifier = "com.example.finxmlprocessor";
     public const string ScheduleId = "daily-eastern-1900";
-    public const string ReleasesUrl = "https://github.com/example/finxml-processor/releases";
+    public const string ReleasesUrl = "https://github.com/applyThoughts/finxml-processor/releases";
 
     public static string Version { get; } = typeof(AppInfo).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
         ?? typeof(AppInfo).Assembly.GetName().Version?.ToString()

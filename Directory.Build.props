@@ -8,7 +8,7 @@
     <Copyright>Copyright (c) Example Organization</Copyright>
     <VersionPrefix>0.1.0</VersionPrefix>
     <ApplicationBundleIdentifier>com.example.finxmlprocessor</ApplicationBundleIdentifier>
-    <RepositoryUrl>https://github.com/example/finxml-processor</RepositoryUrl>
+    <RepositoryUrl>https://github.com/applyThoughts/finxml-processor</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>

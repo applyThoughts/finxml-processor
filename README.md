@@ -44,7 +44,7 @@ shasum -a 256 -c FinXmlProcessor-<version>-osx-arm64.dmg.sha256
 Requires the .NET SDK 10.0.200 or later.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/applyThoughts/finxml-processor.git
 cd finxml-processor
 dotnet build FinXmlProcessor.sln -c Release
 dotnet run --project src/FinXmlProcessor.Desktop -c Release

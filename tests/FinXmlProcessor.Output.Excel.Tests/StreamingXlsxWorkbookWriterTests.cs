@@ -156,11 +156,12 @@ public class StreamingXlsxWorkbookWriterTests
         await using (IWorkbookSession session = await _writer.BeginAsync(path, [Table], WorkbookWriterOptions.Default, CancellationToken.None))
         {
             session.WriteRow(new OutputRow("t", 1, null, [CellValue.FromText("x"), CellValue.Blank(CellType.Decimal), CellValue.Blank(CellType.Date), CellValue.Blank(CellType.DateTime), CellValue.Blank(CellType.Boolean), CellValue.Blank(CellType.Integer)]));
-            File.Exists(path + ".part").Should().BeTrue();
+            Directory.Exists(path + ".spool").Should().BeTrue("rows are spooled to disk, not memory");
         }
 
         File.Exists(path).Should().BeFalse();
         File.Exists(path + ".part").Should().BeFalse();
+        Directory.Exists(path + ".spool").Should().BeFalse();
     }
 
     [Fact]

@@ -1,23 +1,26 @@
-using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
-using CellType = FinXmlProcessor.Domain.Cells.CellType;
 using FinXmlProcessor.Domain.Tables;
+using CellType = FinXmlProcessor.Domain.Cells.CellType;
 
 namespace FinXmlProcessor.Output.Excel;
 
-/// <summary>A small fixed style table plus one cell format per distinct profile-declared number format.</summary>
+/// <summary>
+/// A small fixed style table plus one cell format per distinct profile-declared number format. Built with the
+/// OpenXml SDK object model and serialized once to XML for the streaming package writer.
+/// </summary>
 internal sealed class XlsxStyles
 {
     private const uint FirstCustomNumberFormatId = 164;
 
     private readonly Dictionary<(CellType, string?), uint> _styleByTypeAndFormat;
 
-    private XlsxStyles(Dictionary<(CellType, string?), uint> styleByTypeAndFormat, uint headerStyle, uint textStyle, uint warningStyle)
+    private XlsxStyles(Dictionary<(CellType, string?), uint> styleByTypeAndFormat, uint headerStyle, uint textStyle, uint warningStyle, string stylesheetXml)
     {
         _styleByTypeAndFormat = styleByTypeAndFormat;
         HeaderStyle = headerStyle;
         TextStyle = textStyle;
         WarningStyle = warningStyle;
+        StylesheetXml = stylesheetXml;
     }
 
     public uint HeaderStyle { get; }
@@ -25,6 +28,9 @@ internal sealed class XlsxStyles
     public uint TextStyle { get; }
 
     public uint WarningStyle { get; }
+
+    /// <summary>Complete xl/styles.xml content including the XML declaration.</summary>
+    public string StylesheetXml { get; }
 
     public uint[] ColumnStyles(OutputTableDefinition table)
     {
@@ -43,7 +49,7 @@ internal sealed class XlsxStyles
         return result;
     }
 
-    public static XlsxStyles Create(WorkbookPart workbookPart, IReadOnlyList<OutputTableDefinition> tables)
+    public static XlsxStyles Create(IReadOnlyList<OutputTableDefinition> tables)
     {
         var fonts = new Fonts(
             new Font(new FontSize { Val = 11 }, new FontName { Val = "Calibri" }),
@@ -124,10 +130,7 @@ internal sealed class XlsxStyles
         stylesheet.Append(cellFormats);
         stylesheet.Append(new CellStyles(new CellStyle { Name = "Normal", FormatId = 0, BuiltinId = 0 }) { Count = 1 });
 
-        WorkbookStylesPart stylesPart = workbookPart.AddNewPart<WorkbookStylesPart>();
-        stylesPart.Stylesheet = stylesheet;
-        stylesPart.Stylesheet.Save();
-
-        return new XlsxStyles(styles, header, text, warning);
+        string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + stylesheet.OuterXml;
+        return new XlsxStyles(styles, header, text, warning, xml);
     }
 }

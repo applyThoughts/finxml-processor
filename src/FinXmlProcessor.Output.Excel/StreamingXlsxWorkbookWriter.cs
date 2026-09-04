@@ -1,21 +1,29 @@
 using System.Globalization;
+using System.IO.Compression;
 using System.Text;
+using System.Xml;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using FinXmlProcessor.Application.Abstractions;
-using CellType = FinXmlProcessor.Domain.Cells.CellType;
-using CellValue = FinXmlProcessor.Domain.Cells.CellValue;
-using OxCellValue = DocumentFormat.OpenXml.Spreadsheet.CellValue;
 using FinXmlProcessor.Domain.Issues;
 using FinXmlProcessor.Domain.Tables;
 using Microsoft.Extensions.Logging;
+using CellType = FinXmlProcessor.Domain.Cells.CellType;
+using CellValue = FinXmlProcessor.Domain.Cells.CellValue;
 
 namespace FinXmlProcessor.Output.Excel;
 
 /// <summary>
-/// Forward-only XLSX writer built on <see cref="OpenXmlWriter"/>. Every data row is streamed straight into the
-/// worksheet part; inline strings avoid an unbounded shared-string table; sheets split at the row limit.
+/// Forward-only XLSX writer with bounded memory.
+/// <para>
+/// Why not <c>OpenXmlWriter</c> for the data path: the SDK opens its package in read/write mode, which makes
+/// System.IO.Packaging buffer every worksheet part in memory until the package is closed (measured: ~400 MB
+/// managed heap for a 200 MB input). This writer therefore streams worksheet XML through <see cref="XmlWriter"/>
+/// into compressed spool files and assembles the package with <see cref="ZipArchive"/> in create mode, one entry
+/// at a time. The OpenXml SDK still produces the style table and performs read-side structural verification.
+/// </para>
+/// Inline strings avoid an unbounded shared-string table; sheets split at the row limit; no formula element is ever emitted.
 /// </summary>
 public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
 {
@@ -46,6 +54,11 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
                 return Task.FromResult<IReadOnlyList<RecordIssue>>(issues);
             }
 
+            if (workbook.WorkbookStylesPart?.Stylesheet is null)
+            {
+                issues.Add(RecordIssue.Fatal(IssueCodes.OutputPackageInvalid, "Workbook has no stylesheet."));
+            }
+
             foreach (Sheet sheet in workbook.Workbook.Sheets.Elements<Sheet>())
             {
                 cancellationToken.ThrowIfCancellationRequested();
@@ -72,7 +85,7 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
                 }
             }
         }
-        catch (Exception ex) when (ex is IOException or InvalidDataException or OpenXmlPackageException or System.Xml.XmlException or FileFormatException)
+        catch (Exception ex) when (ex is IOException or InvalidDataException or OpenXmlPackageException or XmlException or FileFormatException)
         {
             issues.Add(RecordIssue.Fatal(IssueCodes.OutputPackageInvalid, $"Workbook could not be opened ({ex.GetType().Name})."));
         }
@@ -80,35 +93,71 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
         return Task.FromResult<IReadOnlyList<RecordIssue>>(issues);
     }
 
-    private sealed class SheetState
+    /// <summary>One worksheet being streamed: XML goes through a fast deflate spool on disk, never into memory.</summary>
+    private sealed class SheetSpool : IDisposable
     {
-        public SheetState(OutputTableDefinition table, string baseName)
+        private readonly FileStream _file;
+        private readonly DeflateStream _deflate;
+
+        public SheetSpool(string spoolPath, string name, OutputTableDefinition table, uint[] styles, bool autoFilter)
         {
+            Path = spoolPath;
+            Name = name;
             Table = table;
-            BaseName = baseName;
+            Styles = styles;
+            AutoFilter = autoFilter;
+            _file = new FileStream(spoolPath, FileMode.Create, FileAccess.Write, FileShare.None, 1 << 16, FileOptions.SequentialScan);
+            _deflate = new DeflateStream(_file, CompressionLevel.Fastest, leaveOpen: false);
+            Writer = XmlWriter.Create(_deflate, new XmlWriterSettings { Encoding = new UTF8Encoding(false), OmitXmlDeclaration = false, CloseOutput = false, CheckCharacters = false, NewLineHandling = NewLineHandling.None });
         }
+
+        public string Path { get; }
+
+        public string Name { get; }
 
         public OutputTableDefinition Table { get; }
 
-        public string BaseName { get; }
+        public uint[] Styles { get; }
 
-        public WorksheetPart? Part { get; set; }
+        public bool AutoFilter { get; }
 
-        public OpenXmlWriter? Writer { get; set; }
-
-        public string? CurrentName { get; set; }
-
-        public int PartNumber { get; set; }
+        public XmlWriter Writer { get; }
 
         public uint RowsInSheet { get; set; }
 
-        public long TotalRows { get; set; }
+        public bool Closed { get; private set; }
 
-        public uint[] StyleIndexes { get; set; } = [];
+        public void Close()
+        {
+            if (Closed)
+            {
+                return;
+            }
+
+            Closed = true;
+            Writer.Dispose();
+            _deflate.Dispose();
+        }
+
+        public void Dispose()
+        {
+            Close();
+            try
+            {
+                File.Delete(Path);
+            }
+            catch (IOException)
+            {
+            }
+        }
     }
 
     private sealed class Session : IWorkbookSession
     {
+        private const string MainNs = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
+        private const string RelNs = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
+        private const string PackageRelNs = "http://schemas.openxmlformats.org/package/2006/relationships";
+
         private static readonly OutputTableDefinition RejectedTable = new(
             "__rejected",
             "Rejected Records",
@@ -120,17 +169,23 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
                 new OutputColumnDefinition("fields", "Safe Field Values", CellType.Text, Width: 80),
             ]);
 
+        private static readonly OutputTableDefinition SummaryTable = new("__summary", "Summary",
+        [
+            new OutputColumnDefinition("item", "Item", CellType.Text, Width: 28),
+            new OutputColumnDefinition("value", "Value", CellType.Text, Width: 90),
+        ]);
+
         private readonly string _finalPath;
         private readonly string _stagingPath;
+        private readonly string _spoolDirectory;
         private readonly WorkbookWriterOptions _options;
         private readonly ILogger _logger;
-        private readonly SpreadsheetDocument _document;
-        private readonly WorkbookPart _workbookPart;
         private readonly XlsxStyles _styles;
         private readonly SheetNaming.Allocator _names = new();
-        private readonly Dictionary<string, SheetState> _states = new(StringComparer.Ordinal);
-        private readonly List<(string Name, string RelId, bool AutoFilter, int Columns, uint LastRow)> _sheets = [];
-        private SheetState? _rejected;
+        private readonly Dictionary<string, TableState> _tables = new(StringComparer.Ordinal);
+        private readonly List<SheetSpool> _completedSheets = [];
+        private TableState? _rejected;
+        private int _spoolCounter;
         private long _rowsWritten;
         private long _truncatedCells;
         private bool _completed;
@@ -140,24 +195,26 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
         {
             _finalPath = finalPath;
             _stagingPath = finalPath + ".part";
+            _spoolDirectory = finalPath + ".spool";
             _options = options;
             _logger = logger;
-            // "Summary" is written outside the allocator; reserve it so no data sheet can take the name.
-            _names.Allocate("Summary");
-
+            _names.Allocate(SummaryTable.SheetName); // reserved: written outside the allocator
             if (File.Exists(_stagingPath))
             {
                 File.Delete(_stagingPath);
             }
 
-            _document = SpreadsheetDocument.Create(_stagingPath, SpreadsheetDocumentType.Workbook);
-            _workbookPart = _document.AddWorkbookPart();
-            _styles = XlsxStyles.Create(_workbookPart, tables.Concat([RejectedTable]).ToList());
+            if (Directory.Exists(_spoolDirectory))
+            {
+                Directory.Delete(_spoolDirectory, recursive: true);
+            }
 
+            Directory.CreateDirectory(_spoolDirectory);
+            _styles = XlsxStyles.Create(tables.Concat([RejectedTable, SummaryTable]).ToList());
             foreach (OutputTableDefinition table in tables)
             {
-                var state = new SheetState(table, table.SheetName) { StyleIndexes = _styles.ColumnStyles(table) };
-                _states[table.Id] = state;
+                var state = new TableState(table, _styles.ColumnStyles(table));
+                _tables[table.Id] = state;
                 OpenNextSheet(state);
             }
         }
@@ -169,18 +226,18 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
         public void WriteRow(OutputRow row)
         {
             ThrowIfUnusable();
-            if (!_states.TryGetValue(row.TableId, out SheetState? state))
+            if (!_tables.TryGetValue(row.TableId, out TableState? state))
             {
                 throw new InvalidOperationException($"Unknown output table '{row.TableId}'.");
             }
 
-            if (state.RowsInSheet >= _options.MaxRowsPerSheet)
+            if (state.Current!.RowsInSheet >= _options.MaxRowsPerSheet)
             {
-                CloseSheet(state, autoFilter: true);
+                CloseSheet(state);
                 OpenNextSheet(state);
             }
 
-            WriteCells(state, row.Cells);
+            WriteCells(state.Current!, row.Cells);
             _rowsWritten++;
         }
 
@@ -194,13 +251,13 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
 
             if (_rejected is null)
             {
-                _rejected = new SheetState(RejectedTable, RejectedTable.SheetName) { StyleIndexes = _styles.ColumnStyles(RejectedTable) };
+                _rejected = new TableState(RejectedTable, _styles.ColumnStyles(RejectedTable));
                 OpenNextSheet(_rejected);
             }
 
-            if (_rejected.RowsInSheet >= _options.MaxRowsPerSheet)
+            if (_rejected.Current!.RowsInSheet >= _options.MaxRowsPerSheet)
             {
-                CloseSheet(_rejected, autoFilter: true);
+                CloseSheet(_rejected);
                 OpenNextSheet(_rejected);
             }
 
@@ -215,7 +272,7 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
                 fields.Append(pair.Key).Append('=').Append(pair.Value);
             }
 
-            WriteCells(_rejected,
+            WriteCells(_rejected.Current!,
             [
                 CellValue.FromInteger(line.SourceOrdinal),
                 CellValue.FromText(line.SafeIdentifier ?? string.Empty),
@@ -225,33 +282,53 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             ]);
         }
 
-        public Task<string> CompleteAsync(IReadOnlyList<SummaryEntry> summary, IReadOnlyList<RecordIssue> jobIssues, CancellationToken cancellationToken)
+        public async Task<string> CompleteAsync(IReadOnlyList<SummaryEntry> summary, IReadOnlyList<RecordIssue> jobIssues, CancellationToken cancellationToken)
         {
             ThrowIfUnusable();
             cancellationToken.ThrowIfCancellationRequested();
-
-            foreach (SheetState state in _states.Values)
+            foreach (TableState state in _tables.Values)
             {
-                CloseSheet(state, autoFilter: true);
+                CloseSheet(state);
             }
 
             if (_rejected is not null)
             {
-                CloseSheet(_rejected, autoFilter: true);
+                CloseSheet(_rejected);
             }
 
-            WriteSummarySheet(summary, jobIssues);
-            WriteWorkbook();
-            _document.Dispose();
-            _completed = true;
+            SheetSpool summarySheet = WriteSummarySheet(summary, jobIssues);
+            var sheets = new List<SheetSpool> { summarySheet };
+            sheets.AddRange(_completedSheets);
 
+            await using (FileStream package = new(_stagingPath, FileMode.Create, FileAccess.Write, FileShare.None, 1 << 16, FileOptions.Asynchronous))
+            using (var zip = new ZipArchive(package, ZipArchiveMode.Create, leaveOpen: false))
+            {
+                WriteEntry(zip, "[Content_Types].xml", w => WriteContentTypes(w, sheets.Count));
+                WriteEntry(zip, "_rels/.rels", WriteRootRelationships);
+                WriteEntry(zip, "xl/workbook.xml", w => WriteWorkbook(w, sheets));
+                WriteEntry(zip, "xl/_rels/workbook.xml.rels", w => WriteWorkbookRelationships(w, sheets.Count));
+                WriteRawEntry(zip, "xl/styles.xml", _styles.StylesheetXml);
+                for (int i = 0; i < sheets.Count; i++)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    ZipArchiveEntry entry = zip.CreateEntry($"xl/worksheets/sheet{i + 1}.xml", CompressionLevel.Optimal);
+                    await using Stream target = entry.Open();
+                    await using FileStream spool = new(sheets[i].Path, FileMode.Open, FileAccess.Read, FileShare.None, 1 << 16, FileOptions.SequentialScan | FileOptions.Asynchronous);
+                    await using var inflate = new DeflateStream(spool, CompressionMode.Decompress);
+                    await inflate.CopyToAsync(target, 1 << 16, cancellationToken).ConfigureAwait(false);
+                }
+            }
+
+            _completed = true;
+            summarySheet.Dispose();
+            DisposeSpools();
             if (File.Exists(_finalPath))
             {
                 throw new IOException($"Output file already exists: {Path.GetFileName(_finalPath)}");
             }
 
             File.Move(_stagingPath, _finalPath, overwrite: false);
-            return Task.FromResult(_finalPath);
+            return _finalPath;
         }
 
         public ValueTask DisposeAsync()
@@ -262,23 +339,9 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             }
 
             _disposed = true;
+            DisposeSpools();
             if (!_completed)
             {
-                foreach (SheetState state in _states.Values)
-                {
-                    state.Writer?.Dispose();
-                }
-
-                _rejected?.Writer?.Dispose();
-                try
-                {
-                    _document.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogDebug(ex, "Ignoring error while discarding staging workbook");
-                }
-
                 try
                 {
                     if (File.Exists(_stagingPath))
@@ -295,6 +358,39 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             return ValueTask.CompletedTask;
         }
 
+        private void DisposeSpools()
+        {
+            foreach (TableState state in _tables.Values)
+            {
+                state.Current?.Dispose();
+                state.Current = null;
+            }
+
+            if (_rejected is not null)
+            {
+                _rejected.Current?.Dispose();
+                _rejected.Current = null;
+            }
+
+            foreach (SheetSpool spool in _completedSheets)
+            {
+                spool.Dispose();
+            }
+
+            _completedSheets.Clear();
+            try
+            {
+                if (Directory.Exists(_spoolDirectory))
+                {
+                    Directory.Delete(_spoolDirectory, recursive: true);
+                }
+            }
+            catch (IOException ex)
+            {
+                _logger.LogWarning(ex, "Could not delete spool folder {Path}", _spoolDirectory);
+            }
+        }
+
         private void ThrowIfUnusable()
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
@@ -304,39 +400,48 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             }
         }
 
-        private void OpenNextSheet(SheetState state)
+        private void OpenNextSheet(TableState state)
         {
             state.PartNumber++;
-            state.CurrentName = _names.Allocate(state.PartNumber == 1 ? state.BaseName : SheetNaming.WithSuffix(SheetNaming.Sanitize(state.BaseName), state.PartNumber));
-            state.Part = _workbookPart.AddNewPart<WorksheetPart>();
-            state.Writer = OpenXmlWriter.Create(state.Part);
-            state.RowsInSheet = 0;
-            OpenXmlWriter w = state.Writer;
-            w.WriteStartElement(new Worksheet());
-            WriteSheetViews(w);
+            string name = _names.Allocate(state.PartNumber == 1 ? state.Table.SheetName : SheetNaming.WithSuffix(SheetNaming.Sanitize(state.Table.SheetName), state.PartNumber));
+            var spool = new SheetSpool(Path.Combine(_spoolDirectory, $"sheet-{++_spoolCounter}.xml.deflate"), name, state.Table, state.Styles, autoFilter: true);
+            state.Current = spool;
+            XmlWriter w = spool.Writer;
+            w.WriteStartDocument(true);
+            w.WriteStartElement("worksheet", MainNs);
+            w.WriteAttributeString("xmlns", "r", null, RelNs);
+            w.WriteStartElement("sheetViews", MainNs);
+            w.WriteStartElement("sheetView", MainNs);
+            w.WriteAttributeString("workbookViewId", "0");
+            w.WriteStartElement("pane", MainNs);
+            w.WriteAttributeString("ySplit", "1");
+            w.WriteAttributeString("topLeftCell", "A2");
+            w.WriteAttributeString("activePane", "bottomLeft");
+            w.WriteAttributeString("state", "frozen");
+            w.WriteEndElement();
+            w.WriteStartElement("selection", MainNs);
+            w.WriteAttributeString("pane", "bottomLeft");
+            w.WriteEndElement();
+            w.WriteEndElement(); // sheetView
+            w.WriteEndElement(); // sheetViews
             WriteColumns(w, state.Table);
-            w.WriteStartElement(new SheetData());
-            WriteHeaderRow(state);
+            w.WriteStartElement("sheetData", MainNs);
+            WriteHeaderRow(spool);
         }
 
-        private static void WriteSheetViews(OpenXmlWriter w)
+        private static void WriteColumns(XmlWriter w, OutputTableDefinition table)
         {
-            w.WriteStartElement(new SheetViews());
-            w.WriteStartElement(new SheetView { WorkbookViewId = 0 });
-            w.WriteElement(new Pane { VerticalSplit = 1, TopLeftCell = "A2", ActivePane = PaneValues.BottomLeft, State = PaneStateValues.Frozen });
-            w.WriteElement(new Selection { Pane = PaneValues.BottomLeft });
-            w.WriteEndElement();
-            w.WriteEndElement();
-        }
-
-        private static void WriteColumns(OpenXmlWriter w, OutputTableDefinition table)
-        {
-            w.WriteStartElement(new Columns());
+            w.WriteStartElement("cols", MainNs);
             for (int i = 0; i < table.Columns.Count; i++)
             {
                 OutputColumnDefinition column = table.Columns[i];
-                double width = column.Width ?? DefaultWidth(column);
-                w.WriteElement(new Column { Min = (uint)(i + 1), Max = (uint)(i + 1), Width = Math.Clamp(width, 4, 255), CustomWidth = true });
+                double width = Math.Clamp(column.Width ?? DefaultWidth(column), 4, 255);
+                w.WriteStartElement("col", MainNs);
+                w.WriteAttributeString("min", (i + 1).ToString(CultureInfo.InvariantCulture));
+                w.WriteAttributeString("max", (i + 1).ToString(CultureInfo.InvariantCulture));
+                w.WriteAttributeString("width", width.ToString(CultureInfo.InvariantCulture));
+                w.WriteAttributeString("customWidth", "1");
+                w.WriteEndElement();
             }
 
             w.WriteEndElement();
@@ -353,12 +458,13 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             _ => 14,
         };
 
-        private void WriteHeaderRow(SheetState state)
+        private void WriteHeaderRow(SheetSpool spool)
         {
-            OpenXmlWriter w = state.Writer!;
-            state.RowsInSheet++;
-            w.WriteStartElement(new Row { RowIndex = state.RowsInSheet });
-            foreach (OutputColumnDefinition column in state.Table.Columns)
+            XmlWriter w = spool.Writer;
+            spool.RowsInSheet++;
+            w.WriteStartElement("row", MainNs);
+            w.WriteAttributeString("r", spool.RowsInSheet.ToString(CultureInfo.InvariantCulture));
+            foreach (OutputColumnDefinition column in spool.Table.Columns)
             {
                 WriteInlineString(w, column.Heading, _styles.HeaderStyle);
             }
@@ -366,20 +472,22 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             w.WriteEndElement();
         }
 
-        private void WriteCells(SheetState state, IReadOnlyList<CellValue> cells)
+        private void WriteCells(SheetSpool spool, IReadOnlyList<CellValue> cells)
         {
-            OpenXmlWriter w = state.Writer!;
-            state.RowsInSheet++;
-            state.TotalRows++;
-            w.WriteStartElement(new Row { RowIndex = state.RowsInSheet });
-            int count = Math.Min(cells.Count, state.Table.Columns.Count);
+            XmlWriter w = spool.Writer;
+            spool.RowsInSheet++;
+            w.WriteStartElement("row", MainNs);
+            w.WriteAttributeString("r", spool.RowsInSheet.ToString(CultureInfo.InvariantCulture));
+            int count = Math.Min(cells.Count, spool.Table.Columns.Count);
             for (int i = 0; i < count; i++)
             {
                 CellValue cell = cells[i];
-                uint style = state.StyleIndexes[i];
+                uint style = spool.Styles[i];
                 if (cell.IsBlank)
                 {
-                    w.WriteElement(new Cell { StyleIndex = style });
+                    w.WriteStartElement("c", MainNs);
+                    w.WriteAttributeString("s", style.ToString(CultureInfo.InvariantCulture));
+                    w.WriteEndElement();
                     continue;
                 }
 
@@ -389,19 +497,19 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
                         WriteInlineString(w, cell.TextValue, style);
                         break;
                     case CellType.Integer:
-                        w.WriteElement(new Cell { StyleIndex = style, CellValue = new OxCellValue(cell.IntegerValue.ToString(CultureInfo.InvariantCulture)) });
+                        WriteValueCell(w, cell.IntegerValue.ToString(CultureInfo.InvariantCulture), style, null);
                         break;
                     case CellType.Decimal:
-                        w.WriteElement(new Cell { StyleIndex = style, CellValue = new OxCellValue(cell.DecimalValue.ToString(CultureInfo.InvariantCulture)) });
+                        WriteValueCell(w, cell.DecimalValue.ToString(CultureInfo.InvariantCulture), style, null);
                         break;
                     case CellType.Date:
-                        w.WriteElement(new Cell { StyleIndex = style, CellValue = new OxCellValue(cell.DateValue.ToDateTime(TimeOnly.MinValue).ToOADate().ToString(CultureInfo.InvariantCulture)) });
+                        WriteValueCell(w, cell.DateValue.ToDateTime(TimeOnly.MinValue).ToOADate().ToString(CultureInfo.InvariantCulture), style, null);
                         break;
                     case CellType.DateTime:
-                        w.WriteElement(new Cell { StyleIndex = style, CellValue = new OxCellValue(cell.DateTimeValue.ToOADate().ToString("R", CultureInfo.InvariantCulture)) });
+                        WriteValueCell(w, cell.DateTimeValue.ToOADate().ToString("R", CultureInfo.InvariantCulture), style, null);
                         break;
                     case CellType.Boolean:
-                        w.WriteElement(new Cell { StyleIndex = style, DataType = CellValues.Boolean, CellValue = new OxCellValue(cell.BooleanValue ? "1" : "0") });
+                        WriteValueCell(w, cell.BooleanValue ? "1" : "0", style, "b");
                         break;
                     default:
                         throw new InvalidOperationException($"Unknown cell type {cell.Type}.");
@@ -411,22 +519,40 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             w.WriteEndElement();
         }
 
+        private static void WriteValueCell(XmlWriter w, string value, uint style, string? type)
+        {
+            w.WriteStartElement("c", MainNs);
+            if (type is not null)
+            {
+                w.WriteAttributeString("t", type);
+            }
+
+            w.WriteAttributeString("s", style.ToString(CultureInfo.InvariantCulture));
+            w.WriteStartElement("v", MainNs);
+            w.WriteString(value);
+            w.WriteEndElement();
+            w.WriteEndElement();
+        }
+
         /// <summary>
         /// Inline strings are always literal: Excel never evaluates them, so text beginning with =, +, - or @ cannot
         /// become a formula. No <c>&lt;f&gt;</c> element is ever emitted by this writer.
         /// </summary>
-        private void WriteInlineString(OpenXmlWriter w, string text, uint style)
+        private void WriteInlineString(XmlWriter w, string text, uint style)
         {
             string safe = SanitizeText(text, _options.MaxCellTextLength, ref _truncatedCells);
-            w.WriteStartElement(new Cell { DataType = CellValues.InlineString, StyleIndex = style });
-            w.WriteStartElement(new InlineString());
-            var t = new Text(safe);
+            w.WriteStartElement("c", MainNs);
+            w.WriteAttributeString("t", "inlineStr");
+            w.WriteAttributeString("s", style.ToString(CultureInfo.InvariantCulture));
+            w.WriteStartElement("is", MainNs);
+            w.WriteStartElement("t", MainNs);
             if (safe.Length > 0 && (char.IsWhiteSpace(safe[0]) || char.IsWhiteSpace(safe[^1])))
             {
-                t.Space = SpaceProcessingModeValues.Preserve;
+                w.WriteAttributeString("xml", "space", null, "preserve");
             }
 
-            w.WriteElement(t);
+            w.WriteString(safe);
+            w.WriteEndElement();
             w.WriteEndElement();
             w.WriteEndElement();
         }
@@ -470,108 +596,183 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
         private static bool IsInvalidXmlChar(char c) =>
             (c < 0x20 && c != 0x09 && c != 0x0A && c != 0x0D) || c == 0xFFFE || c == 0xFFFF;
 
-        private void CloseSheet(SheetState state, bool autoFilter)
+        private void CloseSheet(TableState state)
         {
-            if (state.Writer is null || state.Part is null)
+            SheetSpool? spool = state.Current;
+            if (spool is null || spool.Closed)
             {
                 return;
             }
 
-            OpenXmlWriter w = state.Writer;
+            XmlWriter w = spool.Writer;
             w.WriteEndElement(); // sheetData
-            if (autoFilter && state.RowsInSheet > 0)
+            if (spool.AutoFilter && spool.RowsInSheet > 0)
             {
-                w.WriteElement(new AutoFilter { Reference = $"A1:{ColumnLetter(state.Table.Columns.Count)}{state.RowsInSheet}" });
+                w.WriteStartElement("autoFilter", MainNs);
+                w.WriteAttributeString("ref", $"A1:{ColumnLetter(spool.Table.Columns.Count)}{spool.RowsInSheet}");
+                w.WriteEndElement();
             }
 
             w.WriteEndElement(); // worksheet
-            w.Close();
-            w.Dispose();
-            _sheets.Add((state.CurrentName!, _workbookPart.GetIdOfPart(state.Part), autoFilter, state.Table.Columns.Count, state.RowsInSheet));
-            state.Writer = null;
-            state.Part = null;
+            w.WriteEndDocument();
+            spool.Close();
+            _completedSheets.Add(spool);
+            state.Current = null;
         }
 
-        private void WriteSummarySheet(IReadOnlyList<SummaryEntry> summary, IReadOnlyList<RecordIssue> jobIssues)
+        private SheetSpool WriteSummarySheet(IReadOnlyList<SummaryEntry> summary, IReadOnlyList<RecordIssue> jobIssues)
         {
-            var table = new OutputTableDefinition("__summary", "Summary",
-            [
-                new OutputColumnDefinition("item", "Item", CellType.Text, Width: 28),
-                new OutputColumnDefinition("value", "Value", CellType.Text, Width: 90),
-            ]);
-            WorksheetPart part = _workbookPart.AddNewPart<WorksheetPart>();
-            using (OpenXmlWriter w = OpenXmlWriter.Create(part))
+            var spool = new SheetSpool(Path.Combine(_spoolDirectory, "summary.xml.deflate"), SummaryTable.SheetName, SummaryTable, _styles.ColumnStyles(SummaryTable), autoFilter: false);
+            XmlWriter w = spool.Writer;
+            w.WriteStartDocument(true);
+            w.WriteStartElement("worksheet", MainNs);
+            w.WriteAttributeString("xmlns", "r", null, RelNs);
+            WriteColumns(w, SummaryTable);
+            w.WriteStartElement("sheetData", MainNs);
+            WriteHeaderRow(spool);
+            foreach (SummaryEntry entry in summary)
             {
-                w.WriteStartElement(new Worksheet());
-                WriteColumns(w, table);
-                w.WriteStartElement(new SheetData());
-                uint rowIndex = 1;
-                w.WriteStartElement(new Row { RowIndex = rowIndex });
-                WriteInlineString(w, "Item", _styles.HeaderStyle);
-                WriteInlineString(w, "Value", _styles.HeaderStyle);
+                WriteCells(spool, [CellValue.FromText(entry.Label), CellValue.FromText(entry.Value)]);
+            }
+
+            var notable = jobIssues.Where(i => i.Severity >= IssueSeverity.Warning && i.SourceOrdinal is null).Take(200).ToList();
+            if (notable.Count > 0)
+            {
+                spool.RowsInSheet++;
+                w.WriteStartElement("row", MainNs);
+                w.WriteAttributeString("r", spool.RowsInSheet.ToString(CultureInfo.InvariantCulture));
+                WriteInlineString(w, "Job issues", _styles.HeaderStyle);
+                WriteInlineString(w, string.Empty, _styles.HeaderStyle);
                 w.WriteEndElement();
-                foreach (SummaryEntry entry in summary)
+                foreach (RecordIssue issue in notable)
                 {
-                    rowIndex++;
-                    w.WriteStartElement(new Row { RowIndex = rowIndex });
-                    WriteInlineString(w, entry.Label, _styles.TextStyle);
-                    WriteInlineString(w, entry.Value, _styles.TextStyle);
+                    spool.RowsInSheet++;
+                    w.WriteStartElement("row", MainNs);
+                    w.WriteAttributeString("r", spool.RowsInSheet.ToString(CultureInfo.InvariantCulture));
+                    WriteInlineString(w, $"{issue.Severity} {issue.Code}", _styles.WarningStyle);
+                    WriteInlineString(w, issue.Message, _styles.WarningStyle);
                     w.WriteEndElement();
                 }
-
-                var notable = jobIssues.Where(i => i.Severity >= IssueSeverity.Warning && i.SourceOrdinal is null).Take(200).ToList();
-                if (notable.Count > 0)
-                {
-                    rowIndex++;
-                    w.WriteStartElement(new Row { RowIndex = rowIndex });
-                    WriteInlineString(w, "Job issues", _styles.HeaderStyle);
-                    WriteInlineString(w, string.Empty, _styles.HeaderStyle);
-                    w.WriteEndElement();
-                    foreach (RecordIssue issue in notable)
-                    {
-                        rowIndex++;
-                        w.WriteStartElement(new Row { RowIndex = rowIndex });
-                        WriteInlineString(w, $"{issue.Severity} {issue.Code}", _styles.WarningStyle);
-                        WriteInlineString(w, issue.Message, _styles.WarningStyle);
-                        w.WriteEndElement();
-                    }
-                }
-
-                w.WriteEndElement(); // sheetData
-                w.WriteEndElement(); // worksheet
             }
 
-            _sheets.Insert(0, ("Summary", _workbookPart.GetIdOfPart(part), false, 2, 1));
+            w.WriteEndElement(); // sheetData
+            w.WriteEndElement(); // worksheet
+            w.WriteEndDocument();
+            spool.Close();
+            return spool;
         }
 
-        private void WriteWorkbook()
+        private static void WriteEntry(ZipArchive zip, string name, Action<XmlWriter> write)
         {
-            using OpenXmlWriter w = OpenXmlWriter.Create(_workbookPart);
-            w.WriteStartElement(new Workbook());
-            w.WriteStartElement(new BookViews());
-            w.WriteElement(new WorkbookView { ActiveTab = 0 });
+            ZipArchiveEntry entry = zip.CreateEntry(name, CompressionLevel.Optimal);
+            using Stream stream = entry.Open();
+            using XmlWriter w = XmlWriter.Create(stream, new XmlWriterSettings { Encoding = new UTF8Encoding(false), CloseOutput = false });
+            w.WriteStartDocument(true);
+            write(w);
+            w.WriteEndDocument();
+        }
+
+        private static void WriteRawEntry(ZipArchive zip, string name, string xml)
+        {
+            ZipArchiveEntry entry = zip.CreateEntry(name, CompressionLevel.Optimal);
+            using Stream stream = entry.Open();
+            using var writer = new StreamWriter(stream, new UTF8Encoding(false));
+            writer.Write(xml);
+        }
+
+        private static void WriteContentTypes(XmlWriter w, int sheetCount)
+        {
+            const string ns = "http://schemas.openxmlformats.org/package/2006/content-types";
+            w.WriteStartElement("Types", ns);
+            w.WriteStartElement("Default", ns);
+            w.WriteAttributeString("Extension", "rels");
+            w.WriteAttributeString("ContentType", "application/vnd.openxmlformats-package.relationships+xml");
             w.WriteEndElement();
-            w.WriteStartElement(new Sheets());
-            uint sheetId = 1;
-            foreach ((string name, string relId, _, _, _) in _sheets)
+            w.WriteStartElement("Default", ns);
+            w.WriteAttributeString("Extension", "xml");
+            w.WriteAttributeString("ContentType", "application/xml");
+            w.WriteEndElement();
+            Override(w, ns, "/xl/workbook.xml", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml");
+            Override(w, ns, "/xl/styles.xml", "application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml");
+            for (int i = 1; i <= sheetCount; i++)
             {
-                w.WriteElement(new Sheet { Name = name, SheetId = sheetId++, Id = relId });
+                Override(w, ns, $"/xl/worksheets/sheet{i}.xml", "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml");
             }
 
             w.WriteEndElement();
 
-            var filtered = _sheets.Select((s, index) => (s, index)).Where(x => x.s.AutoFilter).ToList();
+            static void Override(XmlWriter w, string ns, string partName, string contentType)
+            {
+                w.WriteStartElement("Override", ns);
+                w.WriteAttributeString("PartName", partName);
+                w.WriteAttributeString("ContentType", contentType);
+                w.WriteEndElement();
+            }
+        }
+
+        private static void WriteRootRelationships(XmlWriter w)
+        {
+            w.WriteStartElement("Relationships", PackageRelNs);
+            w.WriteStartElement("Relationship", PackageRelNs);
+            w.WriteAttributeString("Id", "rId1");
+            w.WriteAttributeString("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument");
+            w.WriteAttributeString("Target", "xl/workbook.xml");
+            w.WriteEndElement();
+            w.WriteEndElement();
+        }
+
+        private static void WriteWorkbookRelationships(XmlWriter w, int sheetCount)
+        {
+            w.WriteStartElement("Relationships", PackageRelNs);
+            for (int i = 1; i <= sheetCount; i++)
+            {
+                w.WriteStartElement("Relationship", PackageRelNs);
+                w.WriteAttributeString("Id", $"rId{i}");
+                w.WriteAttributeString("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet");
+                w.WriteAttributeString("Target", $"worksheets/sheet{i}.xml");
+                w.WriteEndElement();
+            }
+
+            w.WriteStartElement("Relationship", PackageRelNs);
+            w.WriteAttributeString("Id", $"rId{sheetCount + 1}");
+            w.WriteAttributeString("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles");
+            w.WriteAttributeString("Target", "styles.xml");
+            w.WriteEndElement();
+            w.WriteEndElement();
+        }
+
+        private static void WriteWorkbook(XmlWriter w, List<SheetSpool> sheets)
+        {
+            w.WriteStartElement("workbook", MainNs);
+            w.WriteAttributeString("xmlns", "r", null, RelNs);
+            w.WriteStartElement("bookViews", MainNs);
+            w.WriteStartElement("workbookView", MainNs);
+            w.WriteAttributeString("activeTab", "0");
+            w.WriteEndElement();
+            w.WriteEndElement();
+            w.WriteStartElement("sheets", MainNs);
+            for (int i = 0; i < sheets.Count; i++)
+            {
+                w.WriteStartElement("sheet", MainNs);
+                w.WriteAttributeString("name", sheets[i].Name);
+                w.WriteAttributeString("sheetId", (i + 1).ToString(CultureInfo.InvariantCulture));
+                w.WriteAttributeString("r", "id", RelNs, $"rId{i + 1}");
+                w.WriteEndElement();
+            }
+
+            w.WriteEndElement();
+            var filtered = sheets.Select((s, index) => (s, index)).Where(x => x.s.AutoFilter && x.s.RowsInSheet > 0).ToList();
             if (filtered.Count > 0)
             {
-                w.WriteStartElement(new DefinedNames());
-                foreach (((string name, _, _, int columns, uint lastRow), int index) in filtered)
+                w.WriteStartElement("definedNames", MainNs);
+                foreach ((SheetSpool sheet, int index) in filtered)
                 {
-                    w.WriteElement(new DefinedName($"'{name.Replace("'", "''", StringComparison.Ordinal)}'!$A$1:${ColumnLetter(columns)}${lastRow}")
-                    {
-                        Name = "_xlnm._FilterDatabase",
-                        LocalSheetId = (uint)index,
-                        Hidden = true,
-                    });
+                    w.WriteStartElement("definedName", MainNs);
+                    w.WriteAttributeString("name", "_xlnm._FilterDatabase");
+                    w.WriteAttributeString("localSheetId", index.ToString(CultureInfo.InvariantCulture));
+                    w.WriteAttributeString("hidden", "1");
+                    w.WriteString($"'{sheet.Name.Replace("'", "''", StringComparison.Ordinal)}'!$A$1:${ColumnLetter(sheet.Table.Columns.Count)}${sheet.RowsInSheet}");
+                    w.WriteEndElement();
                 }
 
                 w.WriteEndElement();
@@ -592,6 +793,23 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             }
 
             return sb.ToString();
+        }
+
+        private sealed class TableState
+        {
+            public TableState(OutputTableDefinition table, uint[] styles)
+            {
+                Table = table;
+                Styles = styles;
+            }
+
+            public OutputTableDefinition Table { get; }
+
+            public uint[] Styles { get; }
+
+            public SheetSpool? Current { get; set; }
+
+            public int PartNumber { get; set; }
         }
     }
 }

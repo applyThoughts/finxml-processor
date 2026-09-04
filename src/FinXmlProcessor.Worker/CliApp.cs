@@ -54,8 +54,8 @@ public static class CliApp
 
     public static async Task<int> RunAsync(string[] args, TextWriter stdout, TextWriter stderr, string? rootOverride = null, CancellationToken cancellationToken = default)
     {
-        var jsonOption = new Option<bool>("--json") { Description = "Emit machine-readable JSON instead of text." };
-        var quietOption = new Option<bool>("--quiet") { Description = "Only print errors and the final summary line." };
+        var jsonOption = new Option<bool>("--json") { Description = "Emit machine-readable JSON instead of text.", Recursive = true };
+        var quietOption = new Option<bool>("--quiet") { Description = "Only print errors and the final summary line.", Recursive = true };
         var root = new RootCommand($"{AppInfo.ProductName} worker/CLI {AppInfo.Version}. Exit codes: 0 ok, 1 unexpected, 2 configuration, 3 invalid input, 4 duplicate, 5 processing, 6 output, 7 delivery, 8 cancelled, 9 lock busy.");
         root.Options.Add(jsonOption);
         root.Options.Add(quietOption);

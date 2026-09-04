@@ -84,15 +84,6 @@
         "resolved": "11.3.2",
         "contentHash": "qHDToxto1e3hci5YqbG9n0Ty8mlp3zBUN5wT66wKqaDVzXyQ0do3EnRILd4Ke9jpvsktaPpgE0YjEk7hornryQ=="
       },
-      "Avalonia.Controls.ColorPicker": {
-        "type": "Transitive",
-        "resolved": "11.3.20",
-        "contentHash": "1TMGXUYBFN9sWE2dh/yPOVtPtfJ1Cg0noToMvo+CMGqiwqH8pwab3vkrg+LJ9U6s9GSScsM/A9BaXJS02qABaA==",
-        "dependencies": {
-          "Avalonia": "11.3.20",
-          "Avalonia.Remote.Protocol": "11.3.20"
-        }
-      },
       "Avalonia.FreeDesktop": {
         "type": "Transitive",
         "resolved": "11.3.20",
@@ -135,14 +126,6 @@
           "SkiaSharp": "2.88.9",
           "SkiaSharp.NativeAssets.Linux": "2.88.9",
           "SkiaSharp.NativeAssets.WebAssembly": "2.88.9"
-        }
-      },
-      "Avalonia.Themes.Simple": {
-        "type": "Transitive",
-        "resolved": "11.3.20",
-        "contentHash": "AuwJim+vU6EMmbWLVnCmj6f6x5X/oDjbBVgP7jLoY1Ne+/vO5ovT+hDipGYte+5IKcn8zQSsggRf74a3fbLJfA==",
-        "dependencies": {
-          "Avalonia": "11.3.20"
         }
       },
       "Avalonia.Win32": {
@@ -643,7 +626,6 @@
           "Avalonia": "[11.3.20, )",
           "Avalonia.Controls.DataGrid": "[11.3.13, )",
           "Avalonia.Desktop": "[11.3.20, )",
-          "Avalonia.Diagnostics": "[11.3.20, )",
           "Avalonia.Fonts.Inter": "[11.3.20, )",
           "Avalonia.Themes.Fluent": "[11.3.20, )",
           "CommunityToolkit.Mvvm": "[8.4.2, )",
@@ -722,17 +704,6 @@
           "Avalonia.Skia": "11.3.20",
           "Avalonia.Win32": "11.3.20",
           "Avalonia.X11": "11.3.20"
-        }
-      },
-      "Avalonia.Diagnostics": {
-        "type": "CentralTransitive",
-        "requested": "[11.3.20, )",
-        "resolved": "11.3.20",
-        "contentHash": "SxCrJzTF53Fu9Rjx3nkawEJhvNR2wA4AA95pSqu0MZy4eoRuyvv2apz/Vi+GT5Uw+6J81ZLB9p+OZrsPY6XMqw==",
-        "dependencies": {
-          "Avalonia": "11.3.20",
-          "Avalonia.Controls.ColorPicker": "11.3.20",
-          "Avalonia.Themes.Simple": "11.3.20"
         }
       },
       "Avalonia.Fonts.Inter": {

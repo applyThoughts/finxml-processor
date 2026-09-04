@@ -2,6 +2,11 @@ name: macOS artifacts (unsigned test builds)
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_prerelease:
+        description: "Also publish the unsigned ZIPs as a GitHub pre-release (clearly labelled test build)"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
@@ -76,6 +81,43 @@ jobs:
             artifacts/${{ matrix.rid }}/*.sha256
             artifacts/${{ matrix.rid }}/README-UNSIGNED-TEST-BUILD.txt
           retention-days: 30
+
+  publish-unsigned:
+    name: Publish unsigned test build (manual)
+    if: github.event_name == 'workflow_dispatch' && inputs.publish_prerelease
+    needs: bundle
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Download bundles
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          path: unsigned
+          pattern: finxml-processor-*-unsigned
+          merge-multiple: true
+      - name: Create pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="test-build-${GITHUB_RUN_NUMBER}"
+          {
+            echo "## Unsigned test build ${GITHUB_RUN_NUMBER} (commit ${GITHUB_SHA::7})"
+            echo
+            echo "**Not signed or notarized.** For internal testing only; macOS Gatekeeper will block it by default."
+            echo "Unzip, move \"FinXml Processor.app\" to /Applications, then right-click > Open once, or run:"
+            echo '`xattr -dr com.apple.quarantine "/Applications/FinXml Processor.app"`'
+            echo
+            echo "- Apple Silicon: the \`osx-arm64\` ZIP · Intel: the \`osx-x64\` ZIP"
+            echo
+            echo "### Checksums"
+            echo '```'
+            cat unsigned/*.sha256
+            echo '```'
+          } > notes.md
+          gh release create "$TAG" --prerelease --title "Unsigned test build ${GITHUB_RUN_NUMBER}" --notes-file notes.md --target "$GITHUB_SHA" unsigned/*.zip unsigned/*.sha256 unsigned/README-UNSIGNED-TEST-BUILD.txt
 
   large-benchmark:
     name: 200 MB benchmark (manual)

@@ -57,9 +57,17 @@ jobs:
         run: |
           # The desktop binary must start and exit cleanly when asked for nothing; a crash here means a broken bundle.
           export FINXML_HOME="$(mktemp -d)"
-          timeout 20 "artifacts/${{ matrix.rid }}/FinXml Processor.app/Contents/MacOS/FinXmlProcessor.Desktop" || code=$?
-          if [ "${code:-0}" != "0" ] && [ "${code:-0}" != "124" ]; then echo "::error::desktop app exited with $code"; exit 1; fi
-          echo "Desktop app launched (exit ${code:-0})."
+          "artifacts/${{ matrix.rid }}/FinXml Processor.app/Contents/MacOS/FinXmlProcessor.Desktop" > app.log 2>&1 &
+          APP_PID=$!
+          sleep 20
+          if kill -0 "$APP_PID" 2>/dev/null; then
+            echo "Desktop app is still running after 20 s; stopping it."
+            kill "$APP_PID"; wait "$APP_PID" || true
+          else
+            wait "$APP_PID"; code=$?
+            cat app.log
+            if [ "$code" != "0" ]; then echo "::error::desktop app exited early with $code"; exit 1; fi
+          fi
 
       - name: Label as unsigned test build
         run: |

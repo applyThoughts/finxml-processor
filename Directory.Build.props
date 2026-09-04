@@ -31,6 +31,8 @@
     <InvariantGlobalization>false</InvariantGlobalization>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EnableSourceLink Condition="'$(GITHUB_ACTIONS)' != 'true'">false</EnableSourceLink>
+    <EnableSourceControlManagerQueries Condition="'$(GITHUB_ACTIONS)' != 'true'">false</EnableSourceControlManagerQueries>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DebugType>embedded</DebugType>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>

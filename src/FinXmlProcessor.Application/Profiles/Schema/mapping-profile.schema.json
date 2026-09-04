@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/finxmlprocessor/mapping-profile/v1.schema.json",
+  "title": "FinXml Processor mapping profile (schema version 1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "displayName", "version", "recordPath", "tables", "fields"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$" },
+    "displayName": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string", "maxLength": 2000 },
+    "isSynthetic": { "type": "boolean" },
+    "mapperType": { "type": "string", "pattern": "^[a-z0-9-]{1,40}$" },
+    "namespaces": {
+      "type": "object",
+      "propertyNames": { "pattern": "^([A-Za-z_][A-Za-z0-9_.-]*)?$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "recordPath": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/qname" }
+    },
+    "xsdPath": { "type": ["string", "null"] },
+    "safeIdentifierField": { "type": ["string", "null"] },
+    "duplicateKeyFields": { "type": "array", "items": { "$ref": "#/$defs/identifier" }, "uniqueItems": true },
+    "tables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "sheetName", "columns"],
+        "properties": {
+          "id": { "$ref": "#/$defs/identifier" },
+          "sheetName": { "type": "string", "minLength": 1, "maxLength": 31 },
+          "columns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "heading", "cellType"],
+              "properties": {
+                "id": { "$ref": "#/$defs/identifier" },
+                "heading": { "type": "string", "minLength": 1, "maxLength": 255 },
+                "cellType": { "enum": ["text", "integer", "decimal", "date", "dateTime", "boolean"] },
+                "width": { "type": ["number", "null"], "minimum": 1, "maximum": 255 },
+                "numberFormat": { "type": ["string", "null"], "maxLength": 255 },
+                "sensitivity": { "enum": ["none", "sensitive", "restricted"] },
+                "allowInRejectionOutput": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "table", "column"],
+        "properties": {
+          "id": { "$ref": "#/$defs/identifier" },
+          "source": { "type": ["string", "null"], "$ref": "#/$defs/relativePath" },
+          "table": { "$ref": "#/$defs/identifier" },
+          "column": { "$ref": "#/$defs/identifier" },
+          "required": { "type": "boolean" },
+          "default": { "type": ["string", "null"] },
+          "trim": { "type": "boolean" },
+          "transforms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type"],
+              "properties": {
+                "type": { "enum": ["upper", "lower", "trim", "normalizeWhitespace", "constant", "concat"] },
+                "value": { "type": ["string", "null"] },
+                "sources": { "type": "array", "items": { "$ref": "#/$defs/relativePath" } },
+                "separator": { "type": "string" }
+              }
+            }
+          },
+          "parse": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "dateFormats": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+              "culture": { "type": ["string", "null"] },
+              "trueValues": { "type": "array", "items": { "type": "string" } },
+              "falseValues": { "type": "array", "items": { "type": "string" } },
+              "allowThousands": { "type": "boolean" }
+            }
+          },
+          "validation": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "minLength": { "type": ["integer", "null"], "minimum": 0 },
+              "maxLength": { "type": ["integer", "null"], "minimum": 0 },
+              "pattern": { "type": ["string", "null"], "maxLength": 500 },
+              "allowedValues": { "type": "array", "items": { "type": "string" } },
+              "caseInsensitive": { "type": "boolean" },
+              "min": { "type": ["number", "null"] },
+              "max": { "type": ["number", "null"] },
+              "minDate": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+              "maxDate": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$" },
+    "qname": { "type": "string", "pattern": "^([A-Za-z_][A-Za-z0-9_.-]*:)?[A-Za-z_][A-Za-z0-9_.-]*$" },
+    "relativePath": {
+      "type": ["string", "null"],
+      "pattern": "^(\\.|(([A-Za-z_][A-Za-z0-9_.-]*:)?[A-Za-z_][A-Za-z0-9_.-]*)(/(([A-Za-z_][A-Za-z0-9_.-]*:)?[A-Za-z_][A-Za-z0-9_.-]*))*(/@(([A-Za-z_][A-Za-z0-9_.-]*:)?[A-Za-z_][A-Za-z0-9_.-]*))?|@(([A-Za-z_][A-Za-z0-9_.-]*:)?[A-Za-z_][A-Za-z0-9_.-]*))$"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "demo-fintech-v1",
+  "displayName": "Demo fintech transactions (synthetic)",
+  "version": "1.0.0",
+  "description": "Synthetic demonstration profile. Field names, validation rules and duplicate keys are placeholders that must be replaced once the real XML schema and business rules are supplied. All sample values are fictitious.",
+  "isSynthetic": true,
+  "mapperType": "profile",
+  "namespaces": {
+    "t": "urn:example:fintech:demo:v1"
+  },
+  "recordPath": ["t:TransactionBatch", "t:Transactions", "t:Transaction"],
+  "xsdPath": null,
+  "safeIdentifierField": "transactionId",
+  "duplicateKeyFields": ["transactionId"],
+  "tables": [
+    {
+      "id": "transactions",
+      "sheetName": "Transactions",
+      "columns": [
+        { "id": "transactionId", "heading": "Transaction ID", "cellType": "text", "width": 26, "sensitivity": "none" },
+        { "id": "accountReference", "heading": "Account Reference", "cellType": "text", "width": 22, "sensitivity": "sensitive", "allowInRejectionOutput": true },
+        { "id": "postedAt", "heading": "Posted (UTC)", "cellType": "dateTime", "width": 20, "numberFormat": "yyyy-mm-dd hh:mm:ss" },
+        { "id": "valueDate", "heading": "Value Date", "cellType": "date", "width": 12, "numberFormat": "yyyy-mm-dd" },
+        { "id": "amount", "heading": "Amount", "cellType": "decimal", "width": 16, "numberFormat": "#,##0.00", "sensitivity": "restricted" },
+        { "id": "currency", "heading": "Currency", "cellType": "text", "width": 10 },
+        { "id": "direction", "heading": "Direction", "cellType": "text", "width": 10 },
+        { "id": "status", "heading": "Status", "cellType": "text", "width": 12 },
+        { "id": "counterpartyName", "heading": "Counterparty", "cellType": "text", "width": 30, "sensitivity": "sensitive", "allowInRejectionOutput": false },
+        { "id": "description", "heading": "Description", "cellType": "text", "width": 48 },
+        { "id": "isReversal", "heading": "Reversal", "cellType": "boolean", "width": 10 },
+        { "id": "sequence", "heading": "Sequence", "cellType": "integer", "width": 10 },
+        { "id": "batchId", "heading": "Batch ID", "cellType": "text", "width": 20 },
+        { "id": "sourceSystem", "heading": "Source System", "cellType": "text", "width": 14 }
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "transactionId",
+      "source": "t:TransactionId",
+      "table": "transactions",
+      "column": "transactionId",
+      "required": true,
+      "transforms": [ { "type": "upper" } ],
+      "validation": { "minLength": 8, "maxLength": 64, "pattern": "[A-Z0-9-]+" }
+    },
+    {
+      "id": "accountReference",
+      "source": "t:Account/t:Reference",
+      "table": "transactions",
+      "column": "accountReference",
+      "required": true,
+      "validation": { "minLength": 6, "maxLength": 34 }
+    },
+    {
+      "id": "postedAt",
+      "source": "t:PostedAt",
+      "table": "transactions",
+      "column": "postedAt",
+      "required": true,
+      "parse": { "dateFormats": ["yyyy-MM-dd'T'HH:mm:ssK", "yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", "yyyy-MM-dd'T'HH:mm:ss"] },
+      "validation": { "minDate": "2000-01-01", "maxDate": "2099-12-31" }
+    },
+    {
+      "id": "valueDate",
+      "source": "t:ValueDate",
+      "table": "transactions",
+      "column": "valueDate",
+      "required": false,
+      "parse": { "dateFormats": ["yyyy-MM-dd"] }
+    },
+    {
+      "id": "amount",
+      "source": "t:Amount",
+      "table": "transactions",
+      "column": "amount",
+      "required": true,
+      "parse": { "culture": "" },
+      "validation": { "min": -1000000000, "max": 1000000000 }
+    },
+    {
+      "id": "currency",
+      "source": "t:Amount/@currency",
+      "table": "transactions",
+      "column": "currency",
+      "required": true,
+      "transforms": [ { "type": "upper" } ],
+      "validation": { "pattern": "[A-Z]{3}" }
+    },
+    {
+      "id": "direction",
+      "source": "t:Direction",
+      "table": "transactions",
+      "column": "direction",
+      "required": true,
+      "transforms": [ { "type": "upper" } ],
+      "validation": { "allowedValues": ["CREDIT", "DEBIT"] }
+    },
+    {
+      "id": "status",
+      "source": "t:Status",
+      "table": "transactions",
+      "column": "status",
+      "required": true,
+      "transforms": [ { "type": "upper" } ],
+      "validation": { "allowedValues": ["POSTED", "PENDING", "REVERSED"] }
+    },
+    {
+      "id": "counterpartyName",
+      "source": "t:Counterparty/t:Name",
+      "table": "transactions",
+      "column": "counterpartyName",
+      "transforms": [ { "type": "normalizeWhitespace" } ],
+      "validation": { "maxLength": 140 }
+    },
+    {
+      "id": "description",
+      "source": "t:Description",
+      "table": "transactions",
+      "column": "description",
+      "transforms": [ { "type": "normalizeWhitespace" } ],
+      "validation": { "maxLength": 500 }
+    },
+    {
+      "id": "isReversal",
+      "source": "t:IsReversal",
+      "table": "transactions",
+      "column": "isReversal",
+      "default": "false",
+      "parse": { "trueValues": ["true", "1", "Y"], "falseValues": ["false", "0", "N"] }
+    },
+    {
+      "id": "sequence",
+      "source": "@sequence",
+      "table": "transactions",
+      "column": "sequence",
+      "required": true,
+      "validation": { "min": 1 }
+    },
+    {
+      "id": "batchId",
+      "source": "t:BatchRef/@id",
+      "table": "transactions",
+      "column": "batchId"
+    },
+    {
+      "id": "sourceSystem",
+      "table": "transactions",
+      "column": "sourceSystem",
+      "transforms": [ { "type": "constant", "value": "DEMO" } ]
+    }
+  ]
+}

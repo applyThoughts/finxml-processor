@@ -306,6 +306,12 @@
         "resolved": "10.0.2",
         "contentHash": "JTpM4z0wpoIHHDvlCU27HsXo+zVnpWib94HXQpzzr+jc/P9NYf4w353AK4MXyGq/grm1mbLi7eXsOsDU8sGmNg=="
       },
+      "finxml-gen": {
+        "type": "Project",
+        "dependencies": {
+          "System.CommandLine": "[2.0.11, )"
+        }
+      },
       "finxmlprocessor.application": {
         "type": "Project",
         "dependencies": {

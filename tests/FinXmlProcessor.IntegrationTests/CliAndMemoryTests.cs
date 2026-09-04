@@ -92,6 +92,21 @@ public class CliAndMemoryTests
     }
 
     [Fact]
+    public async Task Generate_command_produces_a_processable_file()
+    {
+        string root = NewRoot();
+        string file = Path.Combine(root, "generated.xml");
+        (int gen, string genText, string genErr) = await RunCliAsync(root, "generate", "--output", file, "--records", "300", "--duplicate-rate", "0.05");
+        gen.Should().Be(ExitCodes.Success, genText + genErr);
+        genText.Should().Contain("Wrote 300 records");
+        File.Exists(file).Should().BeTrue();
+
+        (int ok, string text, string err) = await RunCliAsync(root, "process", "--input", file, "--output", Path.Combine(root, "out"), "--quiet", "--set", "Processing:StabilityWindowMilliseconds=0");
+        ok.Should().Be(ExitCodes.Success, text + err);
+        text.Should().Contain("Completed");
+    }
+
+    [Fact]
     public async Task Run_now_processes_the_newest_file_in_the_input_folder()
     {
         string root = NewRoot();

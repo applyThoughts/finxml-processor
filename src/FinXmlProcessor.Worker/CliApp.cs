@@ -10,6 +10,7 @@ using FinXmlProcessor.Infrastructure.Diagnostics;
 using FinXmlProcessor.Infrastructure.Hosting;
 using FinXmlProcessor.Infrastructure.Retention;
 using FinXmlProcessor.Infrastructure.Scheduling;
+using FinXmlProcessor.TestDataGenerator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -326,7 +327,62 @@ public static class CliApp
             return ExitCodes.FromOutcome(result);
         }));
 
+        // generate (synthetic sample data matching the demo profile)
+        var genOutput = new Option<string>("--output", "-o") { Description = "Where to write the XML file.", Required = true };
+        var genRecords = new Option<long>("--records", "-r") { Description = "Exact number of records (ignored when --approx-size is given).", DefaultValueFactory = _ => 1000 };
+        var genSize = new Option<string?>("--approx-size") { Description = "Approximate size, e.g. 200MB or 50MB." };
+        var genSeed = new Option<int>("--seed") { Description = "Deterministic seed.", DefaultValueFactory = _ => 42 };
+        var genMissing = new Option<double>("--missing-rate") { Description = "Share of records with a missing required field (0-1).", DefaultValueFactory = _ => 0.005 };
+        var genBadDate = new Option<double>("--invalid-date-rate") { DefaultValueFactory = _ => 0.003 };
+        var genBadDecimal = new Option<double>("--invalid-decimal-rate") { DefaultValueFactory = _ => 0.003 };
+        var genDuplicate = new Option<double>("--duplicate-rate") { DefaultValueFactory = _ => 0.005 };
+        var genSpecial = new Option<double>("--special-rate") { Description = "Share of records with Unicode and XML special characters.", DefaultValueFactory = _ => 0.02 };
+        var genLong = new Option<double>("--long-field-rate") { DefaultValueFactory = _ => 0.001 };
+        var genBadStatus = new Option<double>("--invalid-status-rate") { DefaultValueFactory = _ => 0.002 };
+        var genClean = new Option<bool>("--clean") { Description = "No anomalies at all (overrides the rate options)." };
+        var genDefaultNs = new Option<bool>("--default-namespace") { Description = "Serialize with a default namespace instead of a prefix." };
+        var genTruncate = new Option<bool>("--truncate") { Description = "Produce a truncated (malformed) document." };
+        var genCompact = new Option<bool>("--compact") { Description = "No indentation (smaller file)." };
+        var generate = new Command("generate", "Generate a synthetic XML file matching the demo-fintech-v1 profile. All values are fictitious.")
+        {
+            genOutput, genRecords, genSize, genSeed, genMissing, genBadDate, genBadDecimal, genDuplicate, genSpecial, genLong, genBadStatus, genClean, genDefaultNs, genTruncate, genCompact,
+        };
+        generate.SetAction(pr =>
+        {
+            bool clean = pr.GetValue(genClean);
+            var options = new GeneratorOptions
+            {
+                Records = pr.GetValue(genRecords),
+                ApproximateBytes = ParseSize(pr.GetValue(genSize)),
+                Seed = pr.GetValue(genSeed),
+                MissingRequiredRate = clean ? 0 : pr.GetValue(genMissing),
+                InvalidDateRate = clean ? 0 : pr.GetValue(genBadDate),
+                InvalidDecimalRate = clean ? 0 : pr.GetValue(genBadDecimal),
+                DuplicateRate = clean ? 0 : pr.GetValue(genDuplicate),
+                SpecialCharacterRate = clean ? 0 : pr.GetValue(genSpecial),
+                LongFieldRate = clean ? 0 : pr.GetValue(genLong),
+                InvalidStatusRate = clean ? 0 : pr.GetValue(genBadStatus),
+                DefaultNamespace = pr.GetValue(genDefaultNs),
+                Truncate = pr.GetValue(genTruncate),
+                Indent = !pr.GetValue(genCompact),
+            };
+            string path = Path.GetFullPath(pr.GetValue(genOutput)!);
+            GenerationSummary summary = SyntheticDataGenerator.GenerateFile(path, options);
+            if (args.Contains("--json", StringComparer.Ordinal))
+            {
+                stdout.WriteLine(JsonSerializer.Serialize(new { path, summary.Records, summary.Bytes, expectedRejected = summary.ExpectedRejected, summary.ExpectedDuplicates }, Json));
+            }
+            else
+            {
+                stdout.WriteLine($"Wrote {summary.Records:N0} records ({summary.Bytes:N0} bytes) to {path}");
+                stdout.WriteLine($"Injected anomalies: missing={summary.ExpectedMissingRequired:N0}, invalid dates={summary.ExpectedInvalidDates:N0}, invalid decimals={summary.ExpectedInvalidDecimals:N0}, duplicates={summary.ExpectedDuplicates:N0}, long fields={summary.ExpectedLongFields:N0}, invalid status={summary.ExpectedInvalidStatus:N0}");
+            }
+
+            return ExitCodes.Success;
+        });
+
         root.Subcommands.Add(process);
+        root.Subcommands.Add(generate);
         root.Subcommands.Add(schedule);
         root.Subcommands.Add(profileCmd);
         root.Subcommands.Add(sftp);
@@ -337,6 +393,28 @@ public static class CliApp
 
         ParseResult parsed = root.Parse(args);
         return await parsed.InvokeAsync(new InvocationConfiguration { Output = stdout, Error = stderr }, cancellationToken).ConfigureAwait(false);
+    }
+
+    private static long? ParseSize(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return null;
+        }
+
+        string t = text.Trim().ToUpperInvariant();
+        long multiplier = 1;
+        foreach ((string suffix, long factor) in new[] { ("GB", 1024L * 1024 * 1024), ("MB", 1024L * 1024), ("KB", 1024L) })
+        {
+            if (t.EndsWith(suffix, StringComparison.Ordinal))
+            {
+                multiplier = factor;
+                t = t[..^suffix.Length];
+                break;
+            }
+        }
+
+        return (long)(double.Parse(t, CultureInfo.InvariantCulture) * multiplier);
     }
 
     private static async Task<int> WithHost(string[] args, ParseResult parseResult, TextWriter stdout, TextWriter stderr, string? rootOverride, Func<IHost, OutputContext, Task<int>> action)

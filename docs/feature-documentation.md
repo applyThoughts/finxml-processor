@@ -112,6 +112,7 @@ Everything the desktop does is available from the `finxml` worker, with document
 
 ```text
 finxml process --input <path> [--profile <id|path>] [--output <dir>] [--force]
+finxml generate --output <path> [--records N | --approx-size 200MB] [--clean] [--seed N] [anomaly-rate options]
 finxml schedule run-due | run-now | status | agent status|install|uninstall|render
 finxml profile validate <path> | list | import <path> | schema
 finxml sftp test | set-secret <name> | delete-secret <name>

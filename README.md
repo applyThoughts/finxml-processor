@@ -131,8 +131,18 @@ Then make it active on the **Profiles** page (or set `Processing:ActiveProfileId
 
 ## Generating demo files
 
-The repository includes a streaming synthetic data generator that produces files matching the demo profile at any
-size, optionally with bad records:
+The installed app includes the generator in its worker, so on a Mac you can create sample files matching the demo
+profile without installing anything else (the worker lives inside the app bundle):
+
+```bash
+"/Applications/FinXml Processor.app/Contents/MacOS/finxml" generate --output ~/Downloads/demo-50mb.xml --approx-size 50MB
+"/Applications/FinXml Processor.app/Contents/MacOS/finxml" generate --output ~/Downloads/demo-clean.xml --records 5000 --clean
+```
+
+By default a small share of records carry deliberate problems (missing fields, bad dates and amounts, duplicates,
+special characters) so the Rejected Records sheet has something to show; `--clean` disables all of them.
+
+From a source checkout, the same generator is a standalone tool:
 
 ```bash
 dotnet run --project tools/FinXmlProcessor.TestDataGenerator -c Release -- --output demo-200mb.xml --approx-size 200MB
@@ -200,6 +210,7 @@ The Mac must be powered on with a logged-in user session for the agent to run. S
 
 ```text
 finxml process --input <path> [--profile <id|path>] [--output <dir>] [--force]
+finxml generate --output <path> [--records N | --approx-size 200MB] [--clean] [--seed N] [anomaly-rate options]
 finxml schedule run-due | run-now | status | agent status|install|uninstall|render
 finxml profile validate <path> | list | import <path> | schema
 finxml sftp test | set-secret <name> | delete-secret <name>

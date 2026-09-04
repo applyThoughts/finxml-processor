@@ -53,12 +53,12 @@ public class CliAndMemoryTests
 
         string broken = Path.Combine(Path.GetTempPath(), "finxml-tests", $"broken-{Guid.NewGuid():N}.json");
         await File.WriteAllTextAsync(broken, "{ \"schemaVersion\": 1 }");
-        (int invalid, string invalidText, _) = await RunCliAsync(root, "profile", "validate", broken);
-        invalid.Should().Be(ExitCodes.ConfigurationInvalid);
+        (int invalid, string invalidText, string invalidErr) = await RunCliAsync(root, "profile", "validate", broken);
+        invalid.Should().Be(ExitCodes.ConfigurationInvalid, invalidText + invalidErr);
         invalidText.Should().Contain("Invalid");
 
-        (int listCode, string listText, _) = await RunCliAsync(root, "profile", "list");
-        listCode.Should().Be(ExitCodes.Success);
+        (int listCode, string listText, string listErr) = await RunCliAsync(root, "profile", "list");
+        listCode.Should().Be(ExitCodes.Success, listText + listErr);
         listText.Should().Contain("demo-fintech-v1");
 
         (int status, string statusText, _) = await RunCliAsync(root, "schedule", "status", "--json");
@@ -69,8 +69,8 @@ public class CliAndMemoryTests
             doc.RootElement.GetProperty("nextEastern").GetString().Should().Contain("19:00");
         }
 
-        (int notDue, string notDueText, _) = await RunCliAsync(root, "schedule", "run-due", "--quiet");
-        notDue.Should().Be(ExitCodes.Success);
+        (int notDue, string notDueText, string notDueErr) = await RunCliAsync(root, "schedule", "run-due", "--quiet");
+        notDue.Should().Be(ExitCodes.Success, notDueText + notDueErr);
         notDueText.Should().Contain("disabled");
 
         string bundle = Path.Combine(root, "bundle.zip");
@@ -84,8 +84,8 @@ public class CliAndMemoryTests
             zip.Entries.Should().NotContain(e => e.FullName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase) || e.FullName.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase) || e.FullName.EndsWith(".sqlite", StringComparison.OrdinalIgnoreCase));
         }
 
-        (int agent, _, _) = await RunCliAsync(root, "schedule", "agent", "render");
-        agent.Should().Be(ExitCodes.Success);
+        (int agent, string agentText, string agentErr) = await RunCliAsync(root, "schedule", "agent", "render");
+        agent.Should().Be(ExitCodes.Success, agentText + agentErr);
 
         (int self, string selfText, _) = await RunCliAsync(root, "self-test", "--quiet", "--set", "Processing:StabilityWindowMilliseconds=0");
         self.Should().Be(ExitCodes.Success, selfText);

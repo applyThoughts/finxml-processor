@@ -11,7 +11,7 @@
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$" },
     "displayName": { "type": "string", "minLength": 1, "maxLength": 120 },
     "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
-    "description": { "type": "string", "maxLength": 2000 },
+    "description": { "type": ["string", "null"], "maxLength": 2000 },
     "isSynthetic": { "type": "boolean" },
     "mapperType": { "type": "string", "pattern": "^[a-z0-9-]{1,40}$" },
     "namespaces": {

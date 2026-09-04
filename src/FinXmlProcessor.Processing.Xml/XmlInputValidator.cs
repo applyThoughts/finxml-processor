@@ -20,7 +20,7 @@ public sealed class XmlInputValidator : IInputValidator
     {
     }
 
-    internal XmlInputValidator(IOptionsMonitor<ProcessingOptions> options, Func<TimeSpan, CancellationToken, Task> delay)
+    public XmlInputValidator(IOptionsMonitor<ProcessingOptions> options, Func<TimeSpan, CancellationToken, Task> delay)
     {
         _options = options;
         _delay = delay;

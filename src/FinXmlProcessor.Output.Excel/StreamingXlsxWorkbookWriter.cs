@@ -142,11 +142,8 @@ public sealed class StreamingXlsxWorkbookWriter : IWorkbookWriter
             _stagingPath = finalPath + ".part";
             _options = options;
             _logger = logger;
+            // "Summary" is written outside the allocator; reserve it so no data sheet can take the name.
             _names.Allocate("Summary");
-            if (options.IncludeRejectedSheet)
-            {
-                _names.Allocate(RejectedTable.SheetName);
-            }
 
             if (File.Exists(_stagingPath))
             {

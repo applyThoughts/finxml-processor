@@ -1,0 +1,4512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<t:TransactionBatch batchId="BATCH-20260901-01" xmlns:t="urn:example:fintech:demo:v1">
+  <t:Header>
+    <t:Generated>2026-09-01T18:45:00Z</t:Generated>
+    <t:Sender>DEMO-BANK</t:Sender>
+    <t:Note>Synthetic data generated for testing. All identifiers and names are fictitious.</t:Note>
+  </t:Header>
+  <t:Transactions>
+    <t:Transaction sequence="1">
+      <t:TransactionId>TXN-20260901-000000001</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001381815</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T20:14:44Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">18646.31</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #401807</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="2">
+      <t:TransactionId>TXN-20260901-000000002</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009571359</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T11:31:38Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">-5943.50</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #236346</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="3">
+      <t:TransactionId>TXN-20260901-000000003</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007468386</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T19:56:10Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">17472.60</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #264602</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="4">
+      <t:TransactionId>TXN-20260901-000000004</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008382484</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T00:35:03Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">13067.75</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #198403</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="5">
+      <t:TransactionId>TXN-20260901-000000005</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006310377</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T13:37:13Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">12918.94</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #999139</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="6">
+      <t:TransactionId>TXN-20260901-000000006</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001721735</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T18:25:57Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">11739.61</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>=SUM(A1:A9)</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #225870 @mention</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="7">
+      <t:TransactionId>TXN-20260901-000000007</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006304600</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T06:49:47Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">2546.64</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #784430</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="8">
+      <t:TransactionId>TXN-20260901-000000008</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003211062</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T20:52:46Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">7388.08</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #612498</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="9">
+      <t:TransactionId>TXN-20260901-000000009</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008813834</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T03:44:46Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">7587.53</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #876219</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="10">
+      <t:TransactionId>TXN-20260901-000000010</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003980621</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T18:30:22Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-12193.91</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #501565</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="11">
+      <t:TransactionId>TXN-20260901-000000011</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006986072</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T03:21:19Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">18496.75</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #313287</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="12">
+      <t:TransactionId>TXN-20260901-000000012</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003384972</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T00:59:50Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">4196.37</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>@mention</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #533483   padded  </t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="13">
+      <t:TransactionId>TXN-20260901-000000013</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001469395</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T05:59:02Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">-13741.51</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #941545</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="14">
+      <t:TransactionId>TXN-20260901-000000014</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006108931</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T20:24:58Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">7688.00</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #937221</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="15">
+      <t:TransactionId>TXN-20260901-000000015</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008254188</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T22:50:09Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">10931.96</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #431442</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="16">
+      <t:TransactionId>TXN-20260901-000000016</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002008777</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T23:16:29Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">1617.10</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #797661</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="17">
+      <t:TransactionId>TXN-20260901-000000017</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009020618</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T12:42:49Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">12,34.5.6</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #202765</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="18">
+      <t:TransactionId>TXN-20260901-000000018</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002224845</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T22:05:16Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">11507.99</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #740624</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="19">
+      <t:TransactionId>TXN-20260901-000000019</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006274612</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T08:53:17Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">1516.44</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #148237</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="20">
+      <t:TransactionId>TXN-20260901-000000020</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008065886</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-13-45T25:61:00Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-9694.04</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #183057</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="21">
+      <t:TransactionId>TXN-20260901-000000021</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002530992</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T05:04:58Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">16820.90</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #107454</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="22">
+      <t:TransactionId>TXN-20260901-000000022</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001524634</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T09:41:50Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">-16663.27</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #773369</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="23">
+      <t:TransactionId>TXN-20260901-000000023</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001195839</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T10:12:21Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">15380.53</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>-42 leading dash</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #448900 =SUM(A1:A9)</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="24">
+      <t:TransactionId>TXN-20260901-000000024</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002141975</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T13:58:40Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">4340.02</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #707296</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="25">
+      <t:TransactionId>TXN-20260901-000000025</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002085658</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T11:02:16Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">7557.32</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #192424</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="26">
+      <t:TransactionId>TXN-20260901-000000026</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005927017</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T04:32:03Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">14257.87</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #684106</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="27">
+      <t:TransactionId>TXN-20260901-000000027</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007422456</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T10:35:19Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">6541.95</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #279492</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="28">
+      <t:TransactionId>TXN-20260901-000000028</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007002773</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T14:38:06Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">11448.06</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #719922</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="29">
+      <t:TransactionId>TXN-20260901-000000029</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008036143</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T12:48:00Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">-4955.97</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Café &amp; Bäckerei &lt;Straße&gt; "quoted" 'apos'</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #108265 emoji 🧾💳</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="30">
+      <t:TransactionId>TXN-20260901-000000030</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005100803</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T18:17:17Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-4151.65</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #110053</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="31">
+      <t:TransactionId>TXN-20260901-000000031</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001190327</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-13-45T25:61:00Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">14891.73</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #531959</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="32">
+      <t:TransactionId>TXN-20260901-000000032</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009307583</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T23:56:58Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">19960.28</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #441200</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="33">
+      <t:TransactionId>TXN-20260901-000000033</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007844120</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T17:29:53Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">4234.25</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #635113</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="34">
+      <t:TransactionId>TXN-20260901-000000034</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002068450</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T21:39:41Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">4599.44</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #244947</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="35">
+      <t:TransactionId>TXN-20260901-000000035</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005541635</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T11:56:28Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">15547.67</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #145248</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="36">
+      <t:TransactionId>TXN-20260901-000000036</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008996331</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T15:48:24Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">1490.06</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #750395</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="37">
+      <t:TransactionId>TXN-20260901-000000037</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004552648</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T15:10:50Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">4281.37</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #613649</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="38">
+      <t:TransactionId>TXN-20260901-000000038</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005359916</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T18:02:32Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">13954.06</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Ünïcödé ✓ 日本語 テスト</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #189822 @mention</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="39">
+      <t:TransactionId>TXN-20260901-000000039</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008756451</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T10:54:06Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">14826.85</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #565290</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="40">
+      <t:TransactionId>TXN-20260901-000000040</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003786403</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T05:12:41Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">18155.15</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #565680</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="41">
+      <t:TransactionId>TXN-20260901-000000041</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007572839</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T07:34:29Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">11656.25</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #350441</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="42">
+      <t:TransactionId>TXN-20260901-000000042</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009684646</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T15:29:45Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">999.25</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #386252</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="43">
+      <t:TransactionId>TXN-20260901-000000043</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009603507</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T11:54:20Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">10044.76</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #434580</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="44">
+      <t:TransactionId>TXN-20260901-000000044</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003150541</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T13:50:41Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-1359.14</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #849550</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="45">
+      <t:TransactionId>TXN-20260901-000000045</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007931959</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T06:40:20Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">1756.33</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #713950</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="46">
+      <t:TransactionId>TXN-20260901-000000046</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003365759</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T22:04:04Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">3466.55</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #108058</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="47">
+      <t:TransactionId>TXN-20260901-000000047</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004470003</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T14:29:24Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">9641.33</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #119488</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="48">
+      <t:TransactionId>TXN-20260901-000000048</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006632741</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T14:14:35Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">15799.78</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>UNKNOWN</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #489395</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="49">
+      <t:TransactionId>TXN-20260901-000000049</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006589763</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T02:32:02Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-11498.82</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #556225</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="50">
+      <t:TransactionId>TXN-20260901-000000050XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006098272</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T17:45:53Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">15342.23</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #698069 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="51">
+      <t:TransactionId>TXN-20260901-000000051</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002308704</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T09:20:01Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">9406.24</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #770728</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="52">
+      <t:TransactionId>TXN-20260901-000000052</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008492935</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T23:53:29Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">6533.35</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #333293</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="53">
+      <t:TransactionId>TXN-20260901-000000053</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008207813</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T20:17:37Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">18385.36</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #163564</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="54">
+      <t:TransactionId>TXN-20260901-000000054</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009162757</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T12:26:12Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">9912.88</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #729401</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="55">
+      <t:TransactionId>TXN-20260901-000000055</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001142261</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T21:21:54Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">4195.49</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #835545</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="56">
+      <t:TransactionId>TXN-20260901-000000056</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002409637</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T10:19:53Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-4212.36</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #669843</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="57">
+      <t:TransactionId>TXN-20260901-000000057</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008255684</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T04:39:35Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">17921.10</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #260982</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="58">
+      <t:TransactionId>TXN-20260901-000000058</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001530549</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T18:00:56Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">6063.73</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #569154</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="59">
+      <t:TransactionId>TXN-20260901-000000020</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001805098</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T22:33:17Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-4893.90</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #219695</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="60">
+      <t:TransactionId>TXN-20260901-000000060</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001902060</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T14:23:33Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">10516.02</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #242898</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="61">
+      <t:TransactionId>TXN-20260901-000000061</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003618361</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T14:53:15Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">7765.75</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #586159</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="62">
+      <t:TransactionId>TXN-20260901-000000062</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008860482</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T18:21:04Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">9319.42</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #337889</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="63">
+      <t:TransactionId>TXN-20260901-000000063</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002359351</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T18:58:26Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">13836.64</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #456132</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="64">
+      <t:TransactionId>TXN-20260901-000000064</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007359604</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T04:42:08Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">-13726.26</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #837988</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="65">
+      <t:TransactionId>TXN-20260901-000000065</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005231288</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T21:53:27Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">12817.28</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #105644</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="66">
+      <t:TransactionId>TXN-20260901-000000066</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008276550</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T20:10:31Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">3608.67</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #569731</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="67">
+      <t:TransactionId>TXN-20260901-000000067</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004571198</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T03:18:17Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">17482.72</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>@mention</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #433203 Ünïcödé ✓ 日本語 テスト</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="68">
+      <t:TransactionId>TXN-20260901-000000068</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001779801</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T11:37:27Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">-1884.98</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #247317</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="69">
+      <t:TransactionId>TXN-20260901-000000069</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005750189</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T03:38:26Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">4577.61</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #507701</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="70">
+      <t:TransactionId>TXN-20260901-000000070</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006913036</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T03:01:02Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">12509.28</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #891000</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="71">
+      <t:TransactionId>TXN-20260901-000000071</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001572904</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T11:41:07Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">15651.29</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #336207</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="72">
+      <t:TransactionId>TXN-20260901-000000072</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002609390</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T09:04:33Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-2785.47</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #165954</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="73">
+      <t:TransactionId>TXN-20260901-000000073</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007879973</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T18:03:34Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-13761.02</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #622571</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="74">
+      <t:TransactionId>TXN-20260901-000000074</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001412271</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T22:38:54Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-5548.94</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #706367</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="75">
+      <t:TransactionId>TXN-20260901-000000075</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009421577</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T10:06:43Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">14170.26</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #664007</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="76">
+      <t:TransactionId>TXN-20260901-000000076</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008781935</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T12:02:04Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">9409.11</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #898150</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="77">
+      <t:TransactionId>TXN-20260901-000000077</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009687163</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T13:27:42Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">13914.92</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #759854</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="78">
+      <t:TransactionId>TXN-20260901-000000078</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009920403</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T00:10:51Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">12171.13</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #943021</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="79">
+      <t:TransactionId>TXN-20260901-000000079</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006836404</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T03:38:05Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">780.12</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #429786</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="80">
+      <t:TransactionId>TXN-20260901-000000080</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008196973</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T04:46:29Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-3433.05</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #577957</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="81">
+      <t:TransactionId>TXN-20260901-000000081</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006579773</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T12:15:32Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-18506.69</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #206977</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="82">
+      <t:TransactionId>TXN-20260901-000000082</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004463583</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T20:49:14Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">12628.35</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #513697</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="83">
+      <t:TransactionId>TXN-20260901-000000083</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002559918</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T18:37:11Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">9876.82</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #435343</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="84">
+      <t:TransactionId>TXN-20260901-000000084</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008484004</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T04:04:37Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-13382.73</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #327724</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="85">
+      <t:TransactionId>TXN-20260901-000000085</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005428429</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T19:34:14Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">18891.13</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #112768</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="86">
+      <t:TransactionId>TXN-20260901-000000086</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001882322</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T01:56:52Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">472.28</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #292298</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="87">
+      <t:TransactionId>TXN-20260901-000000087</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006756769</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T16:02:50Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">17395.00</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #110590</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="88">
+      <t:TransactionId>TXN-20260901-000000088</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002616299</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T19:06:19Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-45.20</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #601987</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="89">
+      <t:TransactionId>TXN-20260901-000000089</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006774100</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T20:14:35Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">18909.93</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #975451</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="90">
+      <t:TransactionId>TXN-20260901-000000090</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005403759</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T05:06:21Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">-18712.34</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #709071</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="91">
+      <t:TransactionId>TXN-20260901-000000091</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006185802</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T07:06:56Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">-19966.84</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #203341</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="92">
+      <t:TransactionId>TXN-20260901-000000092</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005661230</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T00:52:38Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">12,34.5.6</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>emoji 🧾💳</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #872176   padded  </t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="93">
+      <t:TransactionId>TXN-20260901-000000093</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008036235</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T01:48:11Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">11918.24</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>  padded  </t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #142195 Café &amp; Bäckerei &lt;Straße&gt; "quoted" 'apos'</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="94">
+      <t:TransactionId>TXN-20260901-000000094</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006424545</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T11:24:55Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">4783.08</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #499557</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="95">
+      <t:TransactionId>TXN-20260901-000000095</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009900677</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T18:19:56Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">17096.41</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #108400</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="96">
+      <t:Account>
+        <t:Reference>ACC-0009746176</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T23:22:57Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">3693.90</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #693198</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="97">
+      <t:TransactionId>TXN-20260901-000000097</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003691265</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T05:04:45Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">16639.90</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #327357</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="98">
+      <t:TransactionId>TXN-20260901-000000020</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001224070</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T07:42:07Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">8556.66</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #828832</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="99">
+      <t:TransactionId>TXN-20260901-000000099</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004266548</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T03:36:33Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-11931.92</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #134366</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="100">
+      <t:TransactionId>TXN-20260901-000000100</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006231697</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T15:03:26Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">6887.98</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #946222</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="101">
+      <t:TransactionId>TXN-20260901-000000101</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002853219</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T01:09:13Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">7972.70</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #546909</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="102">
+      <t:TransactionId>TXN-20260901-000000102</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001054848</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T09:31:21Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">12243.72</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #107979</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="103">
+      <t:TransactionId>TXN-20260901-000000103</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004199399</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T08:51:12Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">-17605.93</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #233235</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="104">
+      <t:TransactionId>TXN-20260901-000000104</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009123369</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T09:00:52Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">8125.27</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #948402</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="105">
+      <t:TransactionId>TXN-20260901-000000105</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002445524</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T23:51:11Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">3511.35</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #904600</t:Description>
+      <t:IsReversal>true</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="106">
+      <t:TransactionId>TXN-20260901-000000106</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007187856</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T06:32:33Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">10984.27</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #312958</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="107">
+      <t:TransactionId>TXN-20260901-000000107</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003655244</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T03:31:51Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">-3954.27</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #855066</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="108">
+      <t:TransactionId>TXN-20260901-000000108</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009802375</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T02:30:50Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">-14218.18</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #990574</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="109">
+      <t:TransactionId>TXN-20260901-000000109</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003890511</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T19:07:15Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">5378.18</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #784904</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="110">
+      <t:TransactionId>TXN-20260901-000000110</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004322474</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T00:20:54Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">1611.24</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #597312</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="111">
+      <t:TransactionId>TXN-20260901-000000111</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004219217</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T15:20:09Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">1510.55</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #411136</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="112">
+      <t:TransactionId>TXN-20260901-000000112</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005253945</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T07:54:27Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">13202.23</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #961144</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="113">
+      <t:TransactionId>TXN-20260901-000000054</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007600111</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T09:50:37Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">14097.39</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Ünïcödé ✓ 日本語 テスト</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #751973   padded  </t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="114">
+      <t:TransactionId>TXN-20260901-000000114</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006281412</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T09:19:59Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">3348.47</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #596775</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="115">
+      <t:Account>
+        <t:Reference>ACC-0004730730</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T05:34:40Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-14300.91</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #247479</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="116">
+      <t:TransactionId>TXN-20260901-000000116</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008722211</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T03:49:51Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">7436.87</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #226325</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="117">
+      <t:TransactionId>TXN-20260901-000000117</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006443964</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T14:20:11Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">17003.08</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #180315</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="118">
+      <t:TransactionId>TXN-20260901-000000118</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002659492</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T20:48:51Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">14644.57</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #800707</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="119">
+      <t:TransactionId>TXN-20260901-000000119</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009534767</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T00:43:07Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">12315.92</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #698319</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="120">
+      <t:TransactionId>TXN-20260901-000000120</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008565639</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T19:02:33Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-6067.27</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #653258</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="121">
+      <t:TransactionId>TXN-20260901-000000121</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009016816</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T04:01:21Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">-16652.83</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #364210</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="122">
+      <t:TransactionId>TXN-20260901-000000122</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005974201</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T06:54:14Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">3688.33</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #562556</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="123">
+      <t:TransactionId>TXN-20260901-000000123</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007505484</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T10:01:33Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">2568.00</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #270838</t:Description>
+      <t:IsReversal>true</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="124">
+      <t:TransactionId>TXN-20260901-000000124</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002706014</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T09:39:16Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">3156.24</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #848802</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="125">
+      <t:TransactionId>TXN-20260901-000000125</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002442585</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T04:44:23Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">12236.02</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #841099</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="126">
+      <t:Account>
+        <t:Reference>ACC-0007195587</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T23:05:41Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-10164.22</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #672219</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="127">
+      <t:TransactionId>TXN-20260901-000000127</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004692878</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T00:27:40Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-5931.66</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #861236</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="128">
+      <t:TransactionId>TXN-20260901-000000128</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008185822</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T05:31:36Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">10080.09</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #448534</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="129">
+      <t:TransactionId>TXN-20260901-000000129</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002326934</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T12:09:45Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-11147.63</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #367179</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="130">
+      <t:TransactionId>TXN-20260901-000000130</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001911588</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T15:51:37Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">3876.20</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #403968</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="131">
+      <t:TransactionId>TXN-20260901-000000131</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006372079</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T23:34:18Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">-13323.67</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #403370</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="132">
+      <t:TransactionId>TXN-20260901-000000132</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008848998</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T13:12:39Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">19218.15</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #207432</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="133">
+      <t:TransactionId>TXN-20260901-000000133</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001798450</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T11:20:59Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-12096.76</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #123724</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="134">
+      <t:TransactionId>TXN-20260901-000000134</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001945783</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T13:45:15Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">10835.19</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #850293</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="135">
+      <t:TransactionId>TXN-20260901-000000135</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004213135</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T06:18:34Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">15592.06</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #150294</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="136">
+      <t:TransactionId>TXN-20260901-000000136</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001926817</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T17:55:50Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">18827.84</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #108717</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="137">
+      <t:TransactionId>TXN-20260901-000000137</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007537283</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T00:19:34Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">15995.29</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #427165</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="138">
+      <t:TransactionId>TXN-20260901-000000138</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001576742</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T11:21:19Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">4711.16</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #721424</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="139">
+      <t:TransactionId>TXN-20260901-000000139</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009975773</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T01:20:57Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">9880.73</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #582778</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="140">
+      <t:TransactionId>TXN-20260901-000000140</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005655229</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T23:48:34Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">17548.41</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #712533</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="141">
+      <t:TransactionId>TXN-20260901-000000141</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004904788</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T09:02:50Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">14286.65</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #560235</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="142">
+      <t:TransactionId>TXN-20260901-000000142</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007651020</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T05:27:24Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">11910.16</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #850610</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="143">
+      <t:TransactionId>TXN-20260901-000000143</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008218407</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T02:51:35Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">11734.27</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #146565</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="144">
+      <t:TransactionId>TXN-20260901-000000144</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004166129</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T18:06:49Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">7933.56</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #523558</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="145">
+      <t:TransactionId>TXN-20260901-000000145</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009141783</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T16:44:48Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">7770.39</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>+1-555-0100</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #388006 +1-555-0100</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="146">
+      <t:TransactionId>TXN-20260901-000000146</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002596884</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T13:56:48Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">-7442.31</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #368915</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="147">
+      <t:TransactionId>TXN-20260901-000000147</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004046865</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T03:36:53Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">12,34.5.6</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #836882</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="148">
+      <t:TransactionId>TXN-20260901-000000148</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004816588</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T04:53:43Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-4417.83</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #263688</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="149">
+      <t:TransactionId>TXN-20260901-000000149</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003678758</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T10:02:55Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">8635.57</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #439790</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="150">
+      <t:TransactionId>TXN-20260901-000000150</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004926700</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T07:16:39Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">-18937.32</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #423469</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="151">
+      <t:TransactionId>TXN-20260901-000000151</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003492306</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T09:51:33Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">-7212.80</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #808841</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="152">
+      <t:TransactionId>TXN-20260901-000000152</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003396331</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T22:38:53Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">8661.70</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #996204</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="153">
+      <t:TransactionId>TXN-20260901-000000153</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009794878</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T10:01:36Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">5301.72</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #248467</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="154">
+      <t:TransactionId>TXN-20260901-000000099</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009595129</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T21:09:23Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-14039.25</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #321081</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="155">
+      <t:TransactionId>TXN-20260901-000000155</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008591448</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T14:08:09Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">2974.27</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #454490</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="156">
+      <t:TransactionId>TXN-20260901-000000156</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002500612</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T09:43:56Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">14432.27</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #662348</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="157">
+      <t:TransactionId>TXN-20260901-000000157</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007979363</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T05:45:37Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">5337.12</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #827944</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="158">
+      <t:TransactionId>TXN-20260901-000000158</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007358343</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T21:34:43Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">18213.48</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #857366</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="159">
+      <t:TransactionId>TXN-20260901-000000159</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007061823</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T03:42:44Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">8695.21</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #201736</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="160">
+      <t:TransactionId>TXN-20260901-000000160</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008626089</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T14:16:48Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">5710.20</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #249995</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="161">
+      <t:TransactionId>TXN-20260901-000000161</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007925440</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T21:12:33Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">6444.95</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #500596</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="162">
+      <t:TransactionId>TXN-20260901-000000162</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002849938</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T03:41:28Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">721.11</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #440142</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="163">
+      <t:TransactionId>TXN-20260901-000000163</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008732072</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T20:58:13Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-4135.08</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #977010</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="164">
+      <t:TransactionId>TXN-20260901-000000164</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008696374</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T05:14:21Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">-14966.85</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #921977</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="165">
+      <t:TransactionId>TXN-20260901-000000165</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001227957</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T13:17:11Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">10278.10</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #626705</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="166">
+      <t:TransactionId>TXN-20260901-000000072</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005450361</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T03:22:34Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-4350.31</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #356342</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="167">
+      <t:TransactionId>TXN-20260901-000000167</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002378197</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T12:12:50Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">6849.26</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #553663</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="168">
+      <t:TransactionId>TXN-20260901-000000168</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009095116</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T05:17:03Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">3482.85</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #720835</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="169">
+      <t:TransactionId>TXN-20260901-000000169</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009881479</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T02:03:50Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">5979.60</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #730091</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="170">
+      <t:TransactionId>TXN-20260901-000000170</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006217754</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T03:31:33Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">-3789.85</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #130974</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="171">
+      <t:TransactionId>TXN-20260901-000000171</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007024001</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T06:51:44Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">1753.53</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #930456</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="172">
+      <t:TransactionId>TXN-20260901-000000172</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007408827</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T12:24:03Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">-6820.99</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #367744</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="173">
+      <t:TransactionId>TXN-20260901-000000173</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009134885</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T17:09:01Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">10110.91</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #207014</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="174">
+      <t:TransactionId>TXN-20260901-000000174</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002776268</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T09:55:32Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">9933.27</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #886362</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="175">
+      <t:TransactionId>TXN-20260901-000000175</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009593904</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T12:39:34Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">-19063.51</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #810844</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="176">
+      <t:TransactionId>TXN-20260901-000000176</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004700644</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T18:11:31Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-2980.52</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>=SUM(A1:A9)</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #429110 Tab	and
+newline</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="177">
+      <t:TransactionId>TXN-20260901-000000177</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007253375</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T02:00:49Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">17900.59</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #858217</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="178">
+      <t:TransactionId>TXN-20260901-000000178</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006203341</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T10:10:46Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">15461.60</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #217613</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="179">
+      <t:TransactionId>TXN-20260901-000000179</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005439160</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T12:38:30Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">-9157.56</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #875490</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="180">
+      <t:TransactionId>TXN-20260901-000000180</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004137031</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T15:46:01Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">11558.18</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #692758</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="181">
+      <t:TransactionId>TXN-20260901-000000181</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003414825</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T01:58:42Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">15970.40</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #441922</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="182">
+      <t:TransactionId>TXN-20260901-000000182</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004081052</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T03:47:19Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">635.23</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #809011</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="183">
+      <t:TransactionId>TXN-20260901-000000183</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003215104</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T20:59:55Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">18804.56</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #861117</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="184">
+      <t:TransactionId>TXN-20260901-000000184</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006070056</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T06:14:21Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-1288.72</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #717214</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="185">
+      <t:TransactionId>TXN-20260901-000000185</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002515615</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T08:54:58Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">3085.41</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #746738</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="186">
+      <t:TransactionId>TXN-20260901-000000186</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007547080</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T08:01:54Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-16595.16</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #852124</t:Description>
+      <t:IsReversal>true</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="187">
+      <t:TransactionId>TXN-20260901-000000187</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008696973</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T02:06:38Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">8268.67</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #697933</t:Description>
+      <t:IsReversal>true</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="188">
+      <t:TransactionId>TXN-20260901-000000188</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003115964</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T08:05:51Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">5756.90</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>UNKNOWN</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #969063</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="189">
+      <t:TransactionId>TXN-20260901-000000189</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009763343</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T02:18:10Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">40.68</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #627087</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="190">
+      <t:TransactionId>TXN-20260901-000000190</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009472914</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T15:04:45Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">18307.02</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #917367</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="191">
+      <t:TransactionId>TXN-20260901-000000191</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008874211</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T15:56:39Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">8999.76</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>UNKNOWN</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #968054</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="192">
+      <t:TransactionId>TXN-20260901-000000192</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008772580</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T06:40:44Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">18249.62</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #898006</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="193">
+      <t:TransactionId>TXN-20260901-000000193</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003306261</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T11:32:47Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">-14766.74</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #494556</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="194">
+      <t:TransactionId>TXN-20260901-000000194</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001045905</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T17:39:23Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">4847.36</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>=SUM(A1:A9)</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #659186 Café &amp; Bäckerei &lt;Straße&gt; "quoted" 'apos'</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="195">
+      <t:TransactionId>TXN-20260901-000000195</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002836671</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T10:45:31Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-5061.09</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #418050</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="196">
+      <t:TransactionId>TXN-20260901-000000196</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003963876</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T19:36:35Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">-920.40</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>  padded  </t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #372463 -42 leading dash</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="197">
+      <t:TransactionId>TXN-20260901-000000197</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002231611</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T17:10:01Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">1035.25</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #840676</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="198">
+      <t:TransactionId>TXN-20260901-000000198</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005462099</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T01:12:56Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">10590.46</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Tab	and
+newline</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #329748 Ünïcödé ✓ 日本語 テスト</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="199">
+      <t:TransactionId>TXN-20260901-000000199</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007154372</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T22:23:27Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">19967.04</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #681810</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="200">
+      <t:TransactionId>TXN-20260901-000000200</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003157297</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T13:37:29Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">16352.22</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #841794</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="201">
+      <t:TransactionId>TXN-20260901-000000201</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008363939</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T18:13:27Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">3610.76</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #299755</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="202">
+      <t:TransactionId>TXN-20260901-000000202</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003228895</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T11:41:36Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">-18928.66</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #738073</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="203">
+      <t:TransactionId>TXN-20260901-000000203</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002394651</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T23:33:24Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">-4849.97</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #888452</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="204">
+      <t:TransactionId>TXN-20260901-000000204</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009670107</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T17:48:34Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">-452.71</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #635726</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="205">
+      <t:TransactionId>TXN-20260901-000000205</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003349697</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T02:41:02Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">17018.47</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #111814</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="206">
+      <t:TransactionId>TXN-20260901-000000206</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003310401</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T15:06:37Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">9557.34</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #274184</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="207">
+      <t:TransactionId>TXN-20260901-000000207</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001946515</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T03:22:36Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">18021.55</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #977529</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="208">
+      <t:TransactionId>TXN-20260901-000000015</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001429167</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T20:56:49Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">9786.96</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #960921</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="209">
+      <t:TransactionId>TXN-20260901-000000209</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004045314</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T01:06:22Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">13958.03</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #827394</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="210">
+      <t:TransactionId>TXN-20260901-000000210</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007493185</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T10:27:43Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">17056.46</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #836663</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="211">
+      <t:TransactionId>TXN-20260901-000000211</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003531324</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T05:59:16Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">1881.20</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #886626</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="212">
+      <t:TransactionId>TXN-20260901-000000212</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003470864</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T00:03:26Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">6963.32</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #871204</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="213">
+      <t:TransactionId>TXN-20260901-000000213</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009255464</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T15:08:56Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">1848.28</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #806215</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="214">
+      <t:TransactionId>TXN-20260901-000000180</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007972276</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T13:04:28Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="EUR">3533.93</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #505971</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="215">
+      <t:TransactionId>TXN-20260901-000000215</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007843746</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T16:10:26Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">8669.78</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #154493</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="216">
+      <t:TransactionId>TXN-20260901-000000216</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001639650</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T20:38:28Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">12989.02</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Subscription renewal #867305</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="217">
+      <t:TransactionId>TXN-20260901-000000143</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006566816</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T01:45:45Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">4293.81</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #820752</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="218">
+      <t:TransactionId>TXN-20260901-000000218</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006381810</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T12:32:43Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">2565.91</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Fictional Grocers Ltd</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #582121</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="219">
+      <t:TransactionId>TXN-20260901-000000219</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009960233</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T03:36:09Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-6498.74</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #630448</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="220">
+      <t:TransactionId>TXN-20260901-000000220</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002218981</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T04:01:14Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">4736.14</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #242089</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="221">
+      <t:TransactionId>TXN-20260901-000000221</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007984913</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T05:07:12Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">8639.62</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #778030</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="222">
+      <t:TransactionId>TXN-20260901-000000222</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004697132</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T14:38:14Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">8363.17</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Imaginary Airlines</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #466000</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="223">
+      <t:TransactionId>TXN-20260901-000000223</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001314987</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T00:01:18Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">14845.16</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #729728</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="224">
+      <t:TransactionId>TXN-20260901-000000224</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0007608238</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T01:34:04Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="EUR">10015.97</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>-42 leading dash</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #792635 Tab	and
+newline</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="225">
+      <t:TransactionId>TXN-20260901-000000225</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003915262</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T16:58:02Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">13236.19</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #760202</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="226">
+      <t:TransactionId>TXN-20260901-000000226</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005960023</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T22:19:20Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">7042.52</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #342769</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="227">
+      <t:TransactionId>TXN-20260901-000000227</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005189340</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T15:16:50Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">12153.15</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #483773</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="228">
+      <t:TransactionId>TXN-20260901-000000228</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004222904</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T00:38:24Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">12,34.5.6</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #761223</t:Description>
+      <t:IsReversal>true</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="229">
+      <t:TransactionId>TXN-20260901-000000229</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003889592</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T06:43:06Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">16866.57</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #552024</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="230">
+      <t:TransactionId>TXN-20260901-000000230</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003118074</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T03:36:55Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">14848.85</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>+1-555-0100</t:Name>
+      </t:Counterparty>
+      <t:Description>ATM withdrawal #181041 @mention</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="231">
+      <t:TransactionId>TXN-20260901-000000231</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005996909</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T05:34:43Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">17816.77</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Card purchase #480690</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="232">
+      <t:TransactionId>TXN-20260901-000000232</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0004414639</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T09:53:34Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">-10995.29</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #893760</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="233">
+      <t:TransactionId>TXN-20260901-000000233</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008200737</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T00:39:37Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">16603.59</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #352034</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="234">
+      <t:TransactionId>TXN-20260901-000000234</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006168850</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T02:39:22Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="CAD">19431.54</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #505503</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="235">
+      <t:TransactionId>TXN-20260901-000000235</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0006055687</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T20:36:03Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">16401.92</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Transfer to savings #783896</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="236">
+      <t:TransactionId>TXN-20260901-000000236</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0009641954</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T21:53:52Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">11929.71</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Interest credit #881831</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="237">
+      <t:TransactionId>TXN-20260901-000000206</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0002694961</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T21:31:06Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="CAD">-7071.15</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Placeholder Insurance plc</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #712975</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="238">
+      <t:TransactionId>TXN-20260901-000000238</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005738612</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T15:54:41Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">-4263.83</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Sample Streaming Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #361705</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="239">
+      <t:Account>
+        <t:Reference>ACC-0004401448</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T18:15:07Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="GBP">8220.96</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #581092</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="240">
+      <t:TransactionId>TXN-20260901-000000240</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008490179</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T03:41:33Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="USD">16592.75</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Utilities Co</t:Name>
+      </t:Counterparty>
+      <t:Description>Loan repayment #766707</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="241">
+      <t:TransactionId>TXN-20260901-000000241</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005458649</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T18:42:07Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">2201.44</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Prototype Pharmacy</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #111762</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="242">
+      <t:TransactionId>TXN-20260901-000000242</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0005797319</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T22:43:56Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="EUR">10264.86</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>PENDING</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Refund #574087</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="243">
+      <t:TransactionId>TXN-20260901-000000243</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003648937</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T21:04:29Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">12057.55</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #184462</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="244">
+      <t:TransactionId>TXN-20260901-000000244</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003190449</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-31T18:20:38Z</t:PostedAt>
+      <t:ValueDate>2026-08-31</t:ValueDate>
+      <t:Amount currency="GBP">12,34.5.6</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Demo Coffee Roasters</t:Name>
+      </t:Counterparty>
+      <t:Description>Direct debit #411831</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="245">
+      <t:TransactionId>TXN-20260901-000000015</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001293113</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T04:33:08Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">8658.34</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Mock Bookshop</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #427472</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="246">
+      <t:TransactionId>TXN-20260901-000000246</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003940388</t:Reference>
+        <t:Type>SAVINGS</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T17:49:54Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">1766.98</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Dummy Hardware Store</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #508133</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="247">
+      <t:TransactionId>TXN-20260901-000000247</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008245219</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T11:48:00Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="GBP">12468.53</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Example Payroll Services</t:Name>
+      </t:Counterparty>
+      <t:Description>Standing order #275118</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="248">
+      <t:TransactionId>TXN-20260901-000000248</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0008809847</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-08-30T18:36:13Z</t:PostedAt>
+      <t:ValueDate>2026-08-30</t:ValueDate>
+      <t:Amount currency="USD">12055.27</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Test Transit Authority</t:Name>
+      </t:Counterparty>
+      <t:Description>Salary #193553</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="249">
+      <t:TransactionId>TXN-20260901-000000249</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0001613546</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T01:43:23Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="USD">1469.02</t:Amount>
+      <t:Direction>DEBIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Specimen Telecom</t:Name>
+      </t:Counterparty>
+      <t:Description>Fee reversal #592082</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+    <t:Transaction sequence="250">
+      <t:TransactionId>TXN-20260901-000000250</t:TransactionId>
+      <t:Account>
+        <t:Reference>ACC-0003349113</t:Reference>
+        <t:Type>CHECKING</t:Type>
+      </t:Account>
+      <t:PostedAt>2026-09-01T15:16:42Z</t:PostedAt>
+      <t:ValueDate>2026-09-01</t:ValueDate>
+      <t:Amount currency="CAD">3683.46</t:Amount>
+      <t:Direction>CREDIT</t:Direction>
+      <t:Status>POSTED</t:Status>
+      <t:Counterparty>
+        <t:Name>Ünïcödé ✓ 日本語 テスト</t:Name>
+      </t:Counterparty>
+      <t:Description>Merchant settlement #538282 Ünïcödé ✓ 日本語 テスト</t:Description>
+      <t:IsReversal>false</t:IsReversal>
+      <t:BatchRef id="BATCH-20260901-01" />
+    </t:Transaction>
+  </t:Transactions>
+  <t:Trailer>
+    <t:Count>250</t:Count>
+  </t:Trailer>
+</t:TransactionBatch>

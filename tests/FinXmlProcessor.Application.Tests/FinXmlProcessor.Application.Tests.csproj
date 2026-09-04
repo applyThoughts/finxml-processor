@@ -6,4 +6,8 @@
     <ProjectReference Include="../../src/FinXmlProcessor.Application/FinXmlProcessor.Application.csproj" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="../../samples/profiles/*.json" Link="samples/profiles/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../samples/input/*.xml" Link="samples/input/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

@@ -7,4 +7,8 @@
     <ProjectReference Include="../../src/FinXmlProcessor.Worker/FinXmlProcessor.Worker.csproj" />
     <ProjectReference Include="../../tools/FinXmlProcessor.TestDataGenerator/FinXmlProcessor.TestDataGenerator.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="../../samples/profiles/*.json" Link="samples/profiles/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../samples/input/*.xml" Link="samples/input/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

@@ -35,6 +35,7 @@ public partial class App : Avalonia.Application
             builder.Services.AddTransient<HistoryViewModel>();
             builder.Services.AddTransient<QuarantineViewModel>();
             builder.Services.AddTransient<ProfilesViewModel>();
+            builder.Services.AddTransient<DocumentationViewModel>();
             builder.Services.AddTransient<SettingsViewModel>();
             _host = builder.Build();
 

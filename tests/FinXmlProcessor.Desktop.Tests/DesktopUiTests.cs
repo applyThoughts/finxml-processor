@@ -46,6 +46,7 @@ public sealed class DesktopHost : IAsyncDisposable
         builder.Services.AddTransient<HistoryViewModel>();
         builder.Services.AddTransient<QuarantineViewModel>();
         builder.Services.AddTransient<ProfilesViewModel>();
+        builder.Services.AddTransient<DocumentationViewModel>();
         builder.Services.AddTransient<SettingsViewModel>();
         Host = builder.Build();
     }
@@ -105,9 +106,9 @@ public class DesktopUiTests
         await main.InitializeAsync();
         Dispatcher.RunJobs();
 
-        main.Items.Select(i => i.Title).Should().Equal("Dashboard", "Process File", "History", "Quarantine", "Profiles", "Settings");
+        main.Items.Select(i => i.Title).Should().Equal("Dashboard", "Process File", "History", "Quarantine", "Profiles", "Documentation", "Settings");
         main.CurrentPage.Should().BeOfType<DashboardViewModel>();
-        window.GetVisualDescendants().OfType<ListBox>().Should().Contain(l => l.ItemCount == 6);
+        window.GetVisualDescendants().OfType<ListBox>().Should().Contain(l => l.ItemCount == 7);
 
         main.Navigate("Settings");
         Dispatcher.RunJobs();
@@ -122,6 +123,15 @@ public class DesktopUiTests
         var profiles = (ProfilesViewModel)main.CurrentPage!;
         await WaitUntilAsync(() => profiles.Profiles.Count > 0);
         profiles.Profiles.Should().Contain(p => p.Id == "demo-fintech-v1" && p.IsActive && p.IsSynthetic);
+
+        main.Navigate("Documentation");
+        Dispatcher.RunJobs();
+        var docs = (DocumentationViewModel)main.CurrentPage!;
+        await WaitUntilAsync(() => !docs.IsLoading && docs.SelectedSection?.Markdown.Length > 0);
+        docs.Sections.Select(s => s.Title).Should().Equal("Feature Documentation", "Technical Documentation");
+        docs.Sections[0].Markdown.Should().StartWith("# Feature documentation");
+        docs.Sections[1].Markdown.Should().Contain("## Processing pipeline");
+        window.GetVisualDescendants().OfType<FinXmlProcessor.Desktop.Controls.MarkdownBlock>().Should().ContainSingle().Which.Markdown.Should().Contain("What a run does");
         window.Close();
     }
 

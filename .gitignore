@@ -43,3 +43,7 @@ Thumbs.db
 
 # Local development data folder used by scripts/windows/dev.ps1
 .dev-home/
+
+# Personal working notes (never committed)
+*.local.md
+notes/

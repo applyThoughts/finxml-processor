@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:FinXmlProcessor.Desktop.ViewModels"
+             xmlns:controls="using:FinXmlProcessor.Desktop.Controls"
+             x:Class="FinXmlProcessor.Desktop.Views.DocumentationView"
+             x:DataType="vm:DocumentationViewModel">
+  <StackPanel HorizontalAlignment="Left" MaxWidth="960">
+    <TextBlock Classes="h1" Text="Documentation" />
+    <TextBlock Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" IsVisible="{Binding ErrorMessage, Converter={x:Static ObjectConverters.IsNotNull}}" Text="{Binding ErrorMessage}" />
+    <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,12">
+      <ListBox ItemsSource="{Binding Sections}" SelectedItem="{Binding SelectedSection}" AutomationProperties.Name="Documentation sections">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Horizontal" Spacing="4" />
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBox.ItemTemplate>
+          <DataTemplate DataType="vm:DocumentationSection">
+            <TextBlock Text="{Binding Title}" FontWeight="SemiBold" Margin="6,2" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </StackPanel>
+    <TextBlock Classes="muted" Margin="0,0,0,8" Text="{Binding SelectedSection.RepositoryPath, StringFormat='Also in the repository at {0}', FallbackValue=''}" />
+    <Border Classes="card">
+      <controls:MarkdownBlock Markdown="{Binding SelectedSection.Markdown, FallbackValue=''}" />
+    </Border>
+  </StackPanel>
+</UserControl>

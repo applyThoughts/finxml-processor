@@ -27,6 +27,7 @@ public sealed partial class MainViewModel : ObservableObject
             new NavigationItem("History", "Previous jobs, reports and reruns", typeof(HistoryViewModel)),
             new NavigationItem("Quarantine", "Inputs that could not be processed", typeof(QuarantineViewModel)),
             new NavigationItem("Profiles", "Mapping profiles and validation status", typeof(ProfilesViewModel)),
+            new NavigationItem("Documentation", "Feature and technical guides", typeof(DocumentationViewModel)),
             new NavigationItem("Settings", "Folders, schedule, SFTP, delivery and diagnostics", typeof(SettingsViewModel)),
         ];
     }

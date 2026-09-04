@@ -14,6 +14,7 @@
     <DataTemplate DataType="vm:HistoryViewModel"><views:HistoryView /></DataTemplate>
     <DataTemplate DataType="vm:QuarantineViewModel"><views:QuarantineView /></DataTemplate>
     <DataTemplate DataType="vm:ProfilesViewModel"><views:ProfilesView /></DataTemplate>
+    <DataTemplate DataType="vm:DocumentationViewModel"><views:DocumentationView /></DataTemplate>
     <DataTemplate DataType="vm:SettingsViewModel"><views:SettingsView /></DataTemplate>
   </Window.DataTemplates>
   <Grid ColumnDefinitions="220,*" RowDefinitions="*,Auto">

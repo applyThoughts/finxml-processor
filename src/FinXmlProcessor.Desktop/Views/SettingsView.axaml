@@ -1,0 +1,175 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:FinXmlProcessor.Desktop.ViewModels"
+             x:Class="FinXmlProcessor.Desktop.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel">
+  <StackPanel MaxWidth="900" HorizontalAlignment="Left">
+    <TextBlock Classes="h1" Text="Settings" />
+    <TextBlock Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" IsVisible="{Binding ErrorMessage, Converter={x:Static ObjectConverters.IsNotNull}}" Text="{Binding ErrorMessage}" />
+    <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,12">
+      <Button Content="Save settings" Classes="accent" Command="{Binding SaveCommand}" />
+      <TextBlock VerticalAlignment="Center" Classes="muted" Text="{Binding SaveStatus}" />
+    </StackPanel>
+
+    <Border Classes="card">
+      <StackPanel Spacing="8">
+        <TextBlock Classes="h2" Margin="0" Text="Folders" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Input folder" />
+          <TextBox Classes="field" Width="480" Text="{Binding InputDirectory}" AutomationProperties.Name="Input folder" />
+          <Button Content="Browse…" Command="{Binding BrowseInputCommand}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Output folder" />
+          <TextBox Classes="field" Width="480" Text="{Binding OutputDirectory}" AutomationProperties.Name="Output folder" />
+          <Button Content="Browse…" Command="{Binding BrowseOutputCommand}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Input file pattern" />
+          <TextBox Width="160" Text="{Binding InputPattern}" AutomationProperties.Name="Input file pattern" />
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Max input size (MB)" Margin="16,0,0,0" />
+          <TextBox Width="100" Text="{Binding MaxInputMegabytes}" AutomationProperties.Name="Maximum input size in megabytes" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="8">
+        <TextBlock Classes="h2" Margin="0" Text="Daily schedule (America/New_York)" />
+        <CheckBox IsChecked="{Binding ScheduleEnabled}" Content="Enable scheduled processing" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Time (HH:mm Eastern)" />
+          <TextBox Width="100" Text="{Binding ScheduleTime}" AutomationProperties.Name="Scheduled time in Eastern Time" />
+          <TextBlock Width="160" VerticalAlignment="Center" Text="Catch-up window (hours)" Margin="16,0,0,0" />
+          <TextBox Width="80" Text="{Binding CatchUpWindowHours}" AutomationProperties.Name="Catch-up window in hours" />
+        </StackPanel>
+        <TextBlock Classes="muted" TextWrapping="Wrap" Text="A per-user macOS LaunchAgent invokes the worker at load and every few minutes; the worker itself decides whether the daily run is due, so a missed 7 PM run is caught up after wake or reboot, once per business date. The Mac must be powered on with your user session available; a powered-off Mac cannot run at the scheduled instant." />
+        <TextBlock TextWrapping="Wrap" Text="{Binding AgentStatusText}" />
+        <StackPanel Orientation="Horizontal" Spacing="8" IsVisible="{Binding AgentSupported}">
+          <Button Content="Install or update agent" Command="{Binding InstallAgentCommand}" />
+          <Button Content="Remove agent" Command="{Binding UninstallAgentCommand}" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="8">
+        <TextBlock Classes="h2" Margin="0" Text="SFTP acquisition (optional)" />
+        <TextBlock Classes="muted" TextWrapping="Wrap" Text="Key-based SSH authentication is preferred. The server host key algorithm and SHA-256 fingerprint are required; the first connection is never trusted automatically. Passwords and passphrases are stored in the secure store, never in settings files." />
+        <CheckBox IsChecked="{Binding SftpEnabled}" Content="Enable SFTP download before processing" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Host" />
+          <TextBox Width="300" Text="{Binding SftpHost}" AutomationProperties.Name="SFTP host" />
+          <TextBlock Width="40" VerticalAlignment="Center" Text="Port" Margin="16,0,0,0" />
+          <TextBox Width="80" Text="{Binding SftpPort}" AutomationProperties.Name="SFTP port" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="User name" />
+          <TextBox Width="300" Text="{Binding SftpUsername}" AutomationProperties.Name="SFTP user name" />
+          <TextBlock Width="40" VerticalAlignment="Center" Text="Auth" Margin="16,0,0,0" />
+          <ComboBox Width="120" ItemsSource="{Binding AuthMethods}" SelectedItem="{Binding SftpAuthMethod}" AutomationProperties.Name="Authentication method" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Private key file" />
+          <TextBox Classes="field" Width="480" Text="{Binding SftpPrivateKeyPath}" AutomationProperties.Name="Private key path" />
+          <Button Content="Browse…" Command="{Binding BrowseKeyCommand}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Remote directory" />
+          <TextBox Width="300" Text="{Binding SftpRemoteDirectory}" AutomationProperties.Name="Remote directory" />
+          <TextBlock Width="60" VerticalAlignment="Center" Text="Pattern" Margin="16,0,0,0" />
+          <TextBox Width="120" Text="{Binding SftpFilePattern}" AutomationProperties.Name="Remote file pattern" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Host key algorithm" />
+          <TextBox Width="160" Text="{Binding SftpHostKeyAlgorithm}" Watermark="ssh-ed25519" AutomationProperties.Name="Expected host key algorithm" />
+          <TextBlock Width="120" VerticalAlignment="Center" Text="SHA-256 fingerprint" Margin="16,0,0,0" />
+          <TextBox Width="320" Text="{Binding SftpHostKeyFingerprint}" Watermark="SHA256:…" AutomationProperties.Name="Expected host key SHA-256 fingerprint" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Password / passphrase" />
+          <TextBox Width="300" PasswordChar="•" Text="{Binding SftpSecretInput}" AutomationProperties.Name="Secret to store (password or key passphrase)" />
+          <Button Content="Store in secure store" Command="{Binding StoreSecretCommand}" />
+          <Button Content="Clear stored secrets" Command="{Binding ClearSecretsCommand}" />
+        </StackPanel>
+        <TextBlock Classes="muted" TextWrapping="Wrap" Text="{Binding SftpSecretStatus}" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <Button Content="Test connection" Command="{Binding TestSftpCommand}" />
+        </StackPanel>
+        <TextBlock TextWrapping="Wrap" Text="{Binding SftpTestResult}" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="8">
+        <TextBlock Classes="h2" Margin="0" Text="Delivery" />
+        <TextBlock Classes="muted" TextWrapping="Wrap" Text="Where completed workbooks are handed over. Only implemented providers are listed; the internal-system adapter is a documented extension point and is not claimed to exist yet." />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Provider" />
+          <ComboBox Width="160" ItemsSource="{Binding DeliveryProviders}" SelectedItem="{Binding DeliveryProvider}" AutomationProperties.Name="Delivery provider" />
+          <TextBlock Width="120" VerticalAlignment="Center" Text="On collision" Margin="16,0,0,0" />
+          <ComboBox Width="120" ItemsSource="{Binding CollisionPolicies}" SelectedItem="{Binding DeliveryCollisionPolicy}" AutomationProperties.Name="Collision policy" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Delivery folder" />
+          <TextBox Classes="field" Width="480" Text="{Binding DeliveryFolder}" AutomationProperties.Name="Delivery folder" />
+          <Button Content="Browse…" Command="{Binding BrowseDeliveryCommand}" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="8">
+        <TextBlock Classes="h2" Margin="0" Text="Retention (off by default: nothing is deleted until enabled)" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <CheckBox Width="220" IsChecked="{Binding RetainLogs}" Content="Delete logs older than" />
+          <TextBox Width="70" Text="{Binding LogsDays}" AutomationProperties.Name="Log retention days" />
+          <TextBlock VerticalAlignment="Center" Text="days" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <CheckBox Width="220" IsChecked="{Binding RetainReports}" Content="Delete reports older than" />
+          <TextBox Width="70" Text="{Binding ReportsDays}" AutomationProperties.Name="Report retention days" />
+          <TextBlock VerticalAlignment="Center" Text="days" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <CheckBox Width="220" IsChecked="{Binding RetainQuarantine}" Content="Delete quarantined copies older than" />
+          <TextBox Width="70" Text="{Binding QuarantineDays}" AutomationProperties.Name="Quarantine retention days" />
+          <TextBlock VerticalAlignment="Center" Text="days" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <CheckBox Width="220" IsChecked="{Binding RetainHistory}" Content="Delete job history older than" />
+          <TextBox Width="70" Text="{Binding HistoryDays}" AutomationProperties.Name="History retention days" />
+          <TextBlock VerticalAlignment="Center" Text="days" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="8">
+        <TextBlock Classes="h2" Margin="0" Text="Appearance and diagnostics" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Width="140" VerticalAlignment="Center" Text="Theme" />
+          <ComboBox Width="140" ItemsSource="{Binding Appearances}" SelectedItem="{Binding Appearance}" AutomationProperties.Name="Theme" />
+        </StackPanel>
+        <TextBlock Text="{Binding AppVersion}" />
+        <TextBlock Classes="muted" Text="{Binding DataFolder}" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <Button Content="Refresh diagnostics" Command="{Binding RefreshDiagnosticsCommand}" />
+          <Button Content="Export diagnostic bundle…" Command="{Binding ExportBundleCommand}" />
+          <Button Content="Open data folder" Command="{Binding OpenDataFolderCommand}" />
+          <Button Content="Releases page" Command="{Binding OpenReleasesCommand}" />
+        </StackPanel>
+        <ItemsControl ItemsSource="{Binding Diagnostics}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:DiagnosticFact">
+              <Grid ColumnDefinitions="220,*">
+                <TextBlock Grid.Column="0" Classes="muted" Text="{Binding Key}" />
+                <TextBlock Grid.Column="1" Text="{Binding Value}" TextWrapping="Wrap" />
+              </Grid>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

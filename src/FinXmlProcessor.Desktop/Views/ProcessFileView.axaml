@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:FinXmlProcessor.Desktop.ViewModels"
+             xmlns:profiles="using:FinXmlProcessor.Application.Profiles"
+             x:Class="FinXmlProcessor.Desktop.Views.ProcessFileView"
+             x:DataType="vm:ProcessFileViewModel">
+  <StackPanel MaxWidth="900" HorizontalAlignment="Left" Spacing="4">
+    <TextBlock Classes="h1" Text="Process File" />
+    <TextBlock Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" IsVisible="{Binding ErrorMessage, Converter={x:Static ObjectConverters.IsNotNull}}" Text="{Binding ErrorMessage}" />
+
+    <Border x:Name="DropZone" Classes="card" DragDrop.AllowDrop="True" AutomationProperties.Name="Drop an XML file here or use Browse">
+      <StackPanel Spacing="8">
+        <TextBlock Classes="h2" Margin="0" Text="Input XML file" />
+        <TextBlock Classes="muted" Text="Drag an XML file here, or browse. The original file is never modified." />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBox Classes="field" Width="560" Text="{Binding InputPath}" Watermark="Path to the XML file" AutomationProperties.Name="Input file path" />
+          <Button Content="Browse…" Command="{Binding BrowseInputCommand}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock VerticalAlignment="Center" Text="Profile" Width="80" />
+          <ComboBox Width="360" ItemsSource="{Binding Profiles}" SelectedItem="{Binding SelectedProfile}" AutomationProperties.Name="Mapping profile">
+            <ComboBox.ItemTemplate>
+              <DataTemplate DataType="profiles:InstalledProfile">
+                <TextBlock Text="{Binding Id}" />
+              </DataTemplate>
+            </ComboBox.ItemTemplate>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock VerticalAlignment="Center" Text="Output" Width="80" />
+          <TextBox Classes="field" Width="480" Text="{Binding OutputDirectory}" AutomationProperties.Name="Output folder" />
+          <Button Content="Browse…" Command="{Binding BrowseOutputCommand}" />
+        </StackPanel>
+        <CheckBox IsChecked="{Binding Force}" Content="Force rerun even if identical content was already processed" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="8">
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <Button Content="Validate (preview)" Command="{Binding PreviewCommand}" />
+          <Button Content="Start processing" Classes="accent" Command="{Binding StartCommand}" />
+          <Button Content="Cancel" Command="{Binding CancelCommand}" />
+        </StackPanel>
+        <TextBlock TextWrapping="Wrap" Text="{Binding PreviewText}" IsVisible="{Binding PreviewText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        <StackPanel IsVisible="{Binding Runner.IsBusy}" Spacing="4">
+          <ProgressBar Minimum="0" Maximum="100" Value="{Binding Runner.PercentComplete}" IsIndeterminate="{Binding !Runner.HasProgress}" Height="8" AutomationProperties.Name="Processing progress" />
+          <TextBlock Classes="muted" Text="{Binding Runner.ProgressText}" AutomationProperties.LiveSetting="Polite" />
+        </StackPanel>
+        <StackPanel IsVisible="{Binding ResultText, Converter={x:Static ObjectConverters.IsNotNull}}" Spacing="6">
+          <TextBlock TextWrapping="Wrap" Text="{Binding ResultText}" Classes.status-ok="{Binding ResultIsOk}" Classes.status-warn="{Binding ResultIsWarn}" Classes.status-error="{Binding ResultIsError}" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Content="Show workbook" Command="{Binding RevealOutputCommand}" IsEnabled="{Binding ResultOutputPath, Converter={x:Static ObjectConverters.IsNotNull}}" />
+            <Button Content="Show report" Command="{Binding RevealReportCommand}" IsEnabled="{Binding ResultReportPath, Converter={x:Static ObjectConverters.IsNotNull}}" />
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

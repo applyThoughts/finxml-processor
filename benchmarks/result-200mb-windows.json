@@ -1,0 +1,26 @@
+{
+  "outcome": "CompletedWithWarnings",
+  "inputBytes": 209871897,
+  "elapsedSeconds": 20.05,
+  "throughputMBps": 9.98,
+  "recordsPerSecond": 14915,
+  "peakWorkingSetMB": 100,
+  "peakManagedHeapMB": 19,
+  "totalAllocatedMB": 3498.6,
+  "gen0": 219,
+  "gen1": 2,
+  "gen2": 1,
+  "counts": {
+    "RecordsSeen": 299008,
+    "RecordsAccepted": 293447,
+    "RecordsRejected": 5561,
+    "RecordDuplicates": 1359,
+    "RowsWritten": 293447,
+    "WarningCount": 0
+  },
+  "output": "benchmarks/out\\demo-fintech-v1_2026-09-03_b4ea7583.xlsx",
+  "outputBytes": 13841021,
+  "platform": "Microsoft Windows 10.0.26200 (X64)",
+  "version": "0.1.0",
+  "timestampUtc": "2026-09-04T00:58:08.0047387+00:00"
+}

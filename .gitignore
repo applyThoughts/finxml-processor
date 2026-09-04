@@ -17,9 +17,11 @@ coverage/
 *.coverage
 *.binlog
 
-# Generated large samples and benchmarks (only the small demo file is committed)
+# Generated large samples and benchmark inputs/outputs (results JSON and README are committed)
 samples/input/generated/
-benchmarks/
+benchmarks/*.xml
+benchmarks/out/
+benchmarks/*.log
 
 # Local secrets and environment (never commit)
 *.pem

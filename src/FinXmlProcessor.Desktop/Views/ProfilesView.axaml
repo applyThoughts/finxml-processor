@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:FinXmlProcessor.Desktop.ViewModels"
+             x:Class="FinXmlProcessor.Desktop.Views.ProfilesView"
+             x:DataType="vm:ProfilesViewModel">
+  <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" MinHeight="600">
+    <TextBlock Grid.Row="0" Classes="h1" Text="Profiles" />
+    <StackPanel Grid.Row="1" Spacing="6" Margin="0,0,0,8">
+      <TextBlock Classes="muted" TextWrapping="Wrap" Text="Mapping profiles describe where records live in the XML, which fields become columns, and which validation and duplicate rules apply. Every profile is validated against the built-in schema before it can be activated. A visual designer is not included; edit the JSON and import it." />
+      <TextBlock Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" IsVisible="{Binding ErrorMessage, Converter={x:Static ObjectConverters.IsNotNull}}" Text="{Binding ErrorMessage}" />
+    </StackPanel>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
+      <Button Content="Refresh" Command="{Binding RefreshCommand}" />
+      <Button Content="Import…" Command="{Binding ImportCommand}" />
+      <Button Content="Export…" Command="{Binding ExportCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <Button Content="Set active" Classes="accent" Command="{Binding SetActiveCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected.IsValid, FallbackValue=False}" />
+      <Button Content="Open profiles folder" Command="{Binding RevealFolderCommand}" />
+    </StackPanel>
+    <DataGrid Grid.Row="3" ItemsSource="{Binding Profiles}" SelectedItem="{Binding Selected}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" AutomationProperties.Name="Installed profiles">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:ProfileRowViewModel" Width="100" />
+        <DataGridTextColumn Header="Id" Binding="{Binding Id}" x:DataType="vm:ProfileRowViewModel" Width="180" />
+        <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}" x:DataType="vm:ProfileRowViewModel" Width="*" />
+        <DataGridTextColumn Header="Version" Binding="{Binding Version}" x:DataType="vm:ProfileRowViewModel" Width="80" />
+        <DataGridTextColumn Header="File" Binding="{Binding FileName}" x:DataType="vm:ProfileRowViewModel" Width="200" />
+      </DataGrid.Columns>
+    </DataGrid>
+    <Border Grid.Row="4" Classes="card" Margin="0,12,0,0" IsVisible="{Binding Selected, Converter={x:Static ObjectConverters.IsNotNull}}">
+      <StackPanel Spacing="4">
+        <TextBlock Classes="h2" Margin="0" Text="Details" />
+        <TextBlock TextWrapping="Wrap" Text="{Binding Selected.Details, FallbackValue=''}" />
+        <TextBlock Classes="status-warn" IsVisible="{Binding Selected.IsSynthetic, FallbackValue=False}" Text="Synthetic demonstration profile: rules are placeholders, not approved business rules." />
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

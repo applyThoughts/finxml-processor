@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:FinXmlProcessor.Desktop.ViewModels"
+             x:Class="FinXmlProcessor.Desktop.Views.DashboardView"
+             x:DataType="vm:DashboardViewModel">
+  <StackPanel MaxWidth="900" HorizontalAlignment="Left">
+    <TextBlock Classes="h1" Text="Dashboard" />
+    <Border Classes="banner" IsVisible="{Binding ActiveProfileIsSynthetic}">
+      <TextBlock TextWrapping="Wrap" Text="The active profile is a synthetic demonstration profile. Its field mapping, validation and duplicate rules are placeholders, not approved financial processing rules." />
+    </Border>
+    <TextBlock Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" IsVisible="{Binding ErrorMessage, Converter={x:Static ObjectConverters.IsNotNull}}" Text="{Binding ErrorMessage}" />
+
+    <Border Classes="card">
+      <StackPanel Spacing="6">
+        <TextBlock Classes="h2" Text="Latest result" Margin="0" />
+        <TextBlock Text="{Binding LatestSummary}" Classes.status-ok="{Binding LatestIsOk}" Classes.status-warn="{Binding LatestIsWarn}" Classes.status-error="{Binding LatestIsError}" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <Button Content="Show workbook" Command="{Binding RevealOutputCommand}" IsEnabled="{Binding LatestOutputPath, Converter={x:Static ObjectConverters.IsNotNull}}" />
+          <Button Content="Show report" Command="{Binding RevealReportCommand}" IsEnabled="{Binding LatestReportPath, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="6">
+        <TextBlock Classes="h2" Text="Run now" Margin="0" />
+        <TextBlock TextWrapping="Wrap" Text="{Binding InputReadiness}" />
+        <TextBlock Classes="muted" Text="{Binding InputFolder}" TextWrapping="Wrap" />
+        <TextBlock TextWrapping="Wrap" Text="{Binding ActiveProfileSummary}" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <Button Content="Run Now" Classes="accent" Command="{Binding RunNowCommand}" IsEnabled="{Binding !Runner.IsBusy}" AutomationProperties.Name="Run now: process the newest waiting input file" />
+          <Button Content="Open input folder" Command="{Binding OpenInputFolderCommand}" />
+          <Button Content="Open output folder" Command="{Binding OpenOutputFolderCommand}" />
+        </StackPanel>
+        <TextBlock Classes="muted" Text="{Binding OutputFolder}" TextWrapping="Wrap" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card">
+      <StackPanel Spacing="6">
+        <TextBlock Classes="h2" Text="Schedule" Margin="0" />
+        <TextBlock TextWrapping="Wrap" Text="{Binding ScheduleSummary}" />
+        <TextBlock Text="{Binding NextRunEastern}" />
+        <TextBlock Classes="muted" Text="{Binding NextRunLocal}" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="card" IsVisible="{Binding Runner.IsBusy}">
+      <StackPanel Spacing="6">
+        <TextBlock Classes="h2" Text="In progress" Margin="0" />
+        <TextBlock Text="{Binding Runner.StatusText}" />
+        <ProgressBar Minimum="0" Maximum="100" Value="{Binding Runner.PercentComplete}" IsIndeterminate="{Binding !Runner.HasProgress}" Height="8" />
+        <TextBlock Classes="muted" Text="{Binding Runner.ProgressText}" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

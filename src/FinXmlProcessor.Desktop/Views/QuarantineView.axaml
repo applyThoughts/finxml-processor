@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:FinXmlProcessor.Desktop.ViewModels"
+             x:Class="FinXmlProcessor.Desktop.Views.QuarantineView"
+             x:DataType="vm:QuarantineViewModel">
+  <Grid RowDefinitions="Auto,Auto,Auto,*" MinHeight="600">
+    <TextBlock Grid.Row="0" Classes="h1" Text="Quarantine" />
+    <StackPanel Grid.Row="1" Spacing="6" Margin="0,0,0,8">
+      <TextBlock Classes="muted" TextWrapping="Wrap" Text="Inputs that could not be processed (unsupported format, malformed XML, schema violations). Files from the managed input or staging folders are moved here; files you selected elsewhere are only recorded and never moved." />
+      <TextBlock Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" IsVisible="{Binding ErrorMessage, Converter={x:Static ObjectConverters.IsNotNull}}" Text="{Binding ErrorMessage}" />
+    </StackPanel>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
+      <Button Content="Refresh" Command="{Binding RefreshCommand}" />
+      <Button Content="Reveal" Command="{Binding RevealCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <Button Content="Restore to input folder" Command="{Binding RestoreCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected.HasCopy, FallbackValue=False}" />
+      <Button Content="Delete…" Command="{Binding DeleteCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected, Converter={x:Static ObjectConverters.IsNotNull}}" />
+    </StackPanel>
+    <DataGrid Grid.Row="3" ItemsSource="{Binding Entries}" SelectedItem="{Binding Selected}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" AutomationProperties.Name="Quarantined inputs">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="When" Binding="{Binding When}" x:DataType="vm:QuarantineRowViewModel" Width="140" />
+        <DataGridTextColumn Header="File" Binding="{Binding FileName}" x:DataType="vm:QuarantineRowViewModel" Width="220" />
+        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:QuarantineRowViewModel" Width="100" />
+        <DataGridTextColumn Header="Reason" Binding="{Binding Reason}" x:DataType="vm:QuarantineRowViewModel" Width="*" />
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
+</UserControl>

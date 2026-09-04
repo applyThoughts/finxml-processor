@@ -47,8 +47,8 @@ public class CliAndMemoryTests
     public async Task Profile_schedule_diagnostics_and_self_test_commands()
     {
         string root = NewRoot();
-        (int valid, string validText, _) = await RunCliAsync(root, "profile", "validate", TestHost.DemoProfilePath);
-        valid.Should().Be(ExitCodes.Success, validText);
+        (int valid, string validText, string validErr) = await RunCliAsync(root, "profile", "validate", TestHost.DemoProfilePath);
+        valid.Should().Be(ExitCodes.Success, validText + validErr);
         validText.Should().Contain("Valid: demo-fintech-v1");
 
         string broken = Path.Combine(Path.GetTempPath(), "finxml-tests", $"broken-{Guid.NewGuid():N}.json");
@@ -61,8 +61,8 @@ public class CliAndMemoryTests
         listCode.Should().Be(ExitCodes.Success, listText + listErr);
         listText.Should().Contain("demo-fintech-v1");
 
-        (int status, string statusText, _) = await RunCliAsync(root, "schedule", "status", "--json");
-        status.Should().Be(ExitCodes.Success, statusText);
+        (int status, string statusText, string statusErr) = await RunCliAsync(root, "schedule", "status", "--json");
+        status.Should().Be(ExitCodes.Success, statusText + statusErr);
         using (JsonDocument doc = JsonDocument.Parse(statusText))
         {
             doc.RootElement.GetProperty("due").GetBoolean().Should().BeFalse("scheduling is disabled by default");
@@ -74,8 +74,8 @@ public class CliAndMemoryTests
         notDueText.Should().Contain("disabled");
 
         string bundle = Path.Combine(root, "bundle.zip");
-        (int diag, string diagText, _) = await RunCliAsync(root, "diagnostics", "--bundle", bundle);
-        diag.Should().Be(ExitCodes.Success, diagText);
+        (int diag, string diagText, string diagErr) = await RunCliAsync(root, "diagnostics", "--bundle", bundle);
+        diag.Should().Be(ExitCodes.Success, diagText + diagErr);
         diagText.Should().Contain("Secret store").And.Contain("Next occurrence (Eastern)");
         File.Exists(bundle).Should().BeTrue();
         using (var zip = System.IO.Compression.ZipFile.OpenRead(bundle))
@@ -87,8 +87,8 @@ public class CliAndMemoryTests
         (int agent, string agentText, string agentErr) = await RunCliAsync(root, "schedule", "agent", "render");
         agent.Should().Be(ExitCodes.Success, agentText + agentErr);
 
-        (int self, string selfText, _) = await RunCliAsync(root, "self-test", "--quiet", "--set", "Processing:StabilityWindowMilliseconds=0");
-        self.Should().Be(ExitCodes.Success, selfText);
+        (int self, string selfText, string selfErr) = await RunCliAsync(root, "self-test", "--quiet", "--set", "Processing:StabilityWindowMilliseconds=0");
+        self.Should().Be(ExitCodes.Success, selfText + selfErr);
     }
 
     [Fact]

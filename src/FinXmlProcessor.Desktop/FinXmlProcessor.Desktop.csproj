@@ -8,8 +8,6 @@
     <ApplicationIcon>Assets/app.ico</ApplicationIcon>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <SelfContained>false</SelfContained>
-    <!-- Keeps the lock files complete for the macOS publish RIDs used by CI (locked-mode restore). -->
-    <RuntimeIdentifiers>osx-arm64;osx-x64</RuntimeIdentifiers>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../FinXmlProcessor.Infrastructure/FinXmlProcessor.Infrastructure.csproj" />

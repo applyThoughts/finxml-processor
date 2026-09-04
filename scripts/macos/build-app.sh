@@ -24,7 +24,10 @@ echo "==> Publishing desktop and worker for $RID (version $VERSION, build $BUILD
 rm -rf "$STAGE"
 mkdir -p "$MACOS" "$RESOURCES"
 
-PUBLISH_ARGS=(-c Release -r "$RID" --self-contained true -p:PublishSingleFile=false -p:PublishTrimmed=false -p:IncludeNativeLibrariesForSelfExtract=false -p:Version="$VERSION" -p:InformationalVersion="$VERSION+${GITHUB_SHA:-local}")
+# Restore once for all configured runtime identifiers (matches the committed lock files exactly), then publish
+# per RID with --no-restore: a RID-specific restore would narrow the RID set and fail locked-mode restore.
+dotnet restore "$ROOT/FinXmlProcessor.sln" --locked-mode
+PUBLISH_ARGS=(-c Release -r "$RID" --self-contained true --no-restore -p:PublishSingleFile=false -p:PublishTrimmed=false -p:IncludeNativeLibrariesForSelfExtract=false -p:Version="$VERSION" -p:InformationalVersion="$VERSION+${GITHUB_SHA:-local}")
 
 dotnet publish "$ROOT/src/FinXmlProcessor.Desktop/FinXmlProcessor.Desktop.csproj" "${PUBLISH_ARGS[@]}" -o "$STAGE/publish-desktop"
 dotnet publish "$ROOT/src/FinXmlProcessor.Worker/FinXmlProcessor.Worker.csproj" "${PUBLISH_ARGS[@]}" -o "$STAGE/publish-worker"

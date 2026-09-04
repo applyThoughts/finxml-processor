@@ -38,6 +38,8 @@
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
     <IsPackable>false</IsPackable>
     <RollForward>LatestMajor</RollForward>
+    <!-- Every project restores the macOS runtime graphs so locked-mode restore also succeeds for "dotnet publish -r osx-*". -->
+    <RuntimeIdentifiers>osx-arm64;osx-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <!-- Test projects are recognised by their path and get relaxed rules plus common test packages. -->

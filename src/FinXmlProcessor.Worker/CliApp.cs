@@ -249,7 +249,7 @@ public static class CliApp
                 bundlePath = await service.ExportBundleAsync(bundlePath, ct).ConfigureAwait(false);
             }
 
-            ctx.Emit(new { facts = facts.ToDictionary(f => f.Key.Trim(), f => f.Value, StringComparer.Ordinal), bundle = bundlePath }, string.Join('\n', facts.Select(f => $"{f.Key,-28} {f.Value}")) + (bundlePath is null ? string.Empty : $"\nBundle written to {bundlePath}"));
+            ctx.Emit(new { facts = facts.Select(f => new { key = f.Key.Trim(), value = f.Value }).ToList(), bundle = bundlePath }, string.Join('\n', facts.Select(f => $"{f.Key,-28} {f.Value}")) + (bundlePath is null ? string.Empty : $"\nBundle written to {bundlePath}"));
             return ExitCodes.Success;
         }));
 

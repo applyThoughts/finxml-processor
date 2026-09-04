@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>FinXmlProcessor.Output.Excel.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/FinXmlProcessor.Output.Excel/FinXmlProcessor.Output.Excel.csproj" />
+  </ItemGroup>
+</Project>

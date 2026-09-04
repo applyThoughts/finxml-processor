@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>FinXmlProcessor.Output.Excel</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../FinXmlProcessor.Domain/FinXmlProcessor.Domain.csproj" />
+    <ProjectReference Include="../FinXmlProcessor.Application/FinXmlProcessor.Application.csproj" />
+    <PackageReference Include="DocumentFormat.OpenXml" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+</Project>

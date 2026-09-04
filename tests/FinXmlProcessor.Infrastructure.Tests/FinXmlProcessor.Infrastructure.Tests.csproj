@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>FinXmlProcessor.Infrastructure.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/FinXmlProcessor.Infrastructure/FinXmlProcessor.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

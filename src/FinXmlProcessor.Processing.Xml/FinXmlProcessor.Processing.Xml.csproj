@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>FinXmlProcessor.Processing.Xml</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../FinXmlProcessor.Domain/FinXmlProcessor.Domain.csproj" />
+    <ProjectReference Include="../FinXmlProcessor.Application/FinXmlProcessor.Application.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+</Project>

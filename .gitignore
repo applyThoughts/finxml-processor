@@ -1,0 +1,40 @@
+# Build outputs
+bin/
+obj/
+out/
+artifacts/
+publish/
+*.user
+*.suo
+*.swp
+.vs/
+.vscode/
+.idea/
+*.DotSettings.user
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.binlog
+
+# Generated large samples and benchmarks (only the small demo file is committed)
+samples/input/generated/
+benchmarks/
+
+# Local secrets and environment (never commit)
+*.pem
+*.key
+*.p12
+*.pfx
+*.env
+.env.*
+secrets.json
+appsettings.Local.json
+
+# macOS
+.DS_Store
+*.dmg
+*.app/
+
+# Windows
+Thumbs.db

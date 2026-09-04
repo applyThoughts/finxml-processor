@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>FinXmlProcessor.Infrastructure</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../FinXmlProcessor.Domain/FinXmlProcessor.Domain.csproj" />
+    <ProjectReference Include="../FinXmlProcessor.Application/FinXmlProcessor.Application.csproj" />
+    <ProjectReference Include="../FinXmlProcessor.Processing.Xml/FinXmlProcessor.Processing.Xml.csproj" />
+    <ProjectReference Include="../FinXmlProcessor.Output.Excel/FinXmlProcessor.Output.Excel.csproj" />
+    <PackageReference Include="Microsoft.Data.Sqlite" />
+    <PackageReference Include="SSH.NET" />
+    <PackageReference Include="NodaTime" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Formatting.Compact" />
+  </ItemGroup>
+</Project>

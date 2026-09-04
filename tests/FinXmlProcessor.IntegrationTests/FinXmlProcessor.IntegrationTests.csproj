@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>FinXmlProcessor.IntegrationTests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/FinXmlProcessor.Infrastructure/FinXmlProcessor.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/FinXmlProcessor.Worker/FinXmlProcessor.Worker.csproj" />
+    <ProjectReference Include="../../tools/FinXmlProcessor.TestDataGenerator/FinXmlProcessor.TestDataGenerator.csproj" />
+  </ItemGroup>
+</Project>

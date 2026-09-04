@@ -141,6 +141,8 @@ public sealed class ProcessingPipeline
         {
             _logger.LogError(ex, "Job {JobId} failed with {Code}: {Message}", job.Id, ex.Code, ex.Message);
             job.AddIssue(RecordIssue.Fatal(ex.Code, ex.Message));
+            // Release the reader and staging output first: quarantine may need to move the input file.
+            await run.DisposeAsync().ConfigureAwait(false);
             if (ex.Quarantine)
             {
                 run.Outcome = ProcessingOutcome.Quarantined;
@@ -204,6 +206,7 @@ public sealed class ProcessingPipeline
             if (quarantine)
             {
                 run.Outcome = ProcessingOutcome.Quarantined;
+                await run.DisposeAsync().ConfigureAwait(false);
                 await QuarantineAsync(run, fatal.Code, fatal.Message).ConfigureAwait(false);
             }
             else

@@ -37,7 +37,7 @@ public static partial class LogRedaction
         string result = PrivateKeyBlock().Replace(text, "-----BEGIN [redacted] PRIVATE KEY-----");
         result = UrlCredentials().Replace(result, "$1[redacted]@");
         result = BearerToken().Replace(result, "Bearer [redacted]");
-        result = KeyValueSecret().Replace(result, "$1=[redacted]");
+        result = KeyValueSecret().Replace(result, "$1$2[redacted]");
         return result;
     }
 
@@ -50,7 +50,7 @@ public static partial class LogRedaction
     [GeneratedRegex(@"Bearer\s+[A-Za-z0-9\-._~+/]+=*", RegexOptions.CultureInvariant)]
     private static partial Regex BearerToken();
 
-    [GeneratedRegex(@"\b(password|passwd|secret|passphrase|token|api[_-]?key)\s*[=:]\s*[^\s;,]+", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)]
+    [GeneratedRegex(@"\b(password|passwd|secret|passphrase|token|api[_-]?key)(\s*[=:]\s*)[^\s;,]+", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)]
     private static partial Regex KeyValueSecret();
 }
 

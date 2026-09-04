@@ -56,9 +56,11 @@ public static class CliApp
     {
         var jsonOption = new Option<bool>("--json") { Description = "Emit machine-readable JSON instead of text.", Recursive = true };
         var quietOption = new Option<bool>("--quiet") { Description = "Only print errors and the final summary line.", Recursive = true };
+        var setOption = new Option<string[]>("--set") { Description = "Override a configuration value for this invocation, e.g. --set Processing:MaxInputBytes=2147483648. Repeatable.", Recursive = true, AllowMultipleArgumentsPerToken = false };
         var root = new RootCommand($"{AppInfo.ProductName} worker/CLI {AppInfo.Version}. Exit codes: 0 ok, 1 unexpected, 2 configuration, 3 invalid input, 4 duplicate, 5 processing, 6 output, 7 delivery, 8 cancelled, 9 lock busy.");
         root.Options.Add(jsonOption);
         root.Options.Add(quietOption);
+        root.Options.Add(setOption);
 
         // process
         var input = new Option<string>("--input", "-i") { Description = "Path to the input XML file.", Required = true };
@@ -342,14 +344,14 @@ public static class CliApp
         bool json = args.Contains("--json", StringComparer.Ordinal);
         bool quiet = args.Contains("--quiet", StringComparer.Ordinal);
         var ctx = new OutputContext(stdout, json, quiet);
-        string[] hostArgs = args.Where(a => a is not ("--json" or "--quiet")).ToArray();
+        string[] overrides = ExtractOverrides(args);
         try
         {
-            HostApplicationBuilder builder = FinXmlHost.CreateBuilder([], console: !json, rootOverride);
+            HostApplicationBuilder builder = FinXmlHost.CreateBuilder(overrides, console: !json, rootOverride);
             using IHost host = builder.Build();
             await host.Services.GetRequiredService<IProcessingRepository>().InitializeAsync(CancellationToken.None).ConfigureAwait(false);
             await InstallBuiltInProfilesAsync(host).ConfigureAwait(false);
-            _ = hostArgs;
+            _ = parseResult;
             return await action(host, ctx).ConfigureAwait(false);
         }
         catch (OperationCanceledException)
@@ -362,6 +364,25 @@ public static class CliApp
             stderr.WriteLine($"Error: {ex.GetType().Name}: {ex.Message}");
             return ExitCodes.Unexpected;
         }
+    }
+
+    /// <summary>Collects "--set key=value" pairs as configuration command-line tokens ("key=value").</summary>
+    private static string[] ExtractOverrides(string[] args)
+    {
+        var result = new List<string>();
+        for (int i = 0; i < args.Length; i++)
+        {
+            if (string.Equals(args[i], "--set", StringComparison.Ordinal) && i + 1 < args.Length)
+            {
+                result.Add(args[++i]);
+            }
+            else if (args[i].StartsWith("--set=", StringComparison.Ordinal))
+            {
+                result.Add(args[i]["--set=".Length..]);
+            }
+        }
+
+        return [.. result];
     }
 
     private static async Task InstallBuiltInProfilesAsync(IHost host)
@@ -412,7 +433,8 @@ public static class CliApp
         {
             Out = output;
             Json = json;
-            Quiet = quiet;
+            // JSON output must be the only thing on stdout, so progress lines are suppressed as well.
+            Quiet = quiet || json;
         }
 
         public TextWriter Out { get; }

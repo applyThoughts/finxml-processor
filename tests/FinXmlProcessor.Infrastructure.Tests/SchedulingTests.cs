@@ -90,7 +90,8 @@ public class SchedulingTests
         (await service.EvaluateAsync(scheduled + Duration.FromMinutes(1), CancellationToken.None)).Should().Match<DueRunDecision>(d => d.IsDue && !d.IsCatchUp);
         (await service.EvaluateAsync(scheduled + Duration.FromHours(3), CancellationToken.None)).Should().Match<DueRunDecision>(d => d.IsDue && d.IsCatchUp);
         (await service.EvaluateAsync(scheduled + Duration.FromHours(21), CancellationToken.None)).IsDue.Should().BeFalse("outside catch-up window");
-        (await service.EvaluateAsync(scheduled - Duration.FromMinutes(1), CancellationToken.None)).Should().Match<DueRunDecision>(d => d.IsDue && d.IsCatchUp && d.Occurrence!.BusinessDate == new LocalDate(2026, 6, 30));
+        (await service.EvaluateAsync(scheduled - Duration.FromMinutes(1), CancellationToken.None)).Should().Match<DueRunDecision>(d => !d.IsDue && d.Occurrence!.BusinessDate == new LocalDate(2026, 6, 30), "yesterday's run is 23h59m old, outside the 20h window");
+        (await Create(repository, catchUpHours: 30).EvaluateAsync(scheduled - Duration.FromMinutes(1), CancellationToken.None)).Should().Match<DueRunDecision>(d => d.IsDue && d.IsCatchUp && d.Occurrence!.BusinessDate == new LocalDate(2026, 6, 30));
 
         repository.GetScheduledRunAsync(Arg.Any<string>(), new DateOnly(2026, 7, 1), Arg.Any<CancellationToken>())
             .Returns(new ScheduledRunEntry("s", new DateOnly(2026, 7, 1), scheduled.ToDateTimeOffset(), Guid.NewGuid(), ScheduledRunOutcomes.Completed, null));

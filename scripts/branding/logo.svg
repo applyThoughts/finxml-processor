@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="FinXml Processor logo">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B4F8A"/>
+      <stop offset="1" stop-color="#118A8F"/>
+    </linearGradient>
+  </defs>
+  <!-- Tile -->
+  <rect x="64" y="64" width="896" height="896" rx="112" fill="url(#tile)"/>
+  <!-- XML angle brackets -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="46" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="330,372 214,512 330,652"/>
+    <polyline points="402,372 518,512 402,652"/>
+  </g>
+  <!-- Spreadsheet card -->
+  <g>
+    <rect x="580" y="322" width="300" height="380" rx="22" fill="#F3F7FA"/>
+    <path d="M580 344a22 22 0 0 1 22-22h256a22 22 0 0 1 22 22v73H580z" fill="#2EB86B"/>
+    <g fill="#FFFFFF">
+      <rect x="606" y="359" width="60" height="16" rx="8"/>
+      <rect x="706" y="359" width="60" height="16" rx="8"/>
+      <rect x="806" y="359" width="60" height="16" rx="8"/>
+    </g>
+    <g stroke="#C9D6E2" stroke-width="10">
+      <line x1="680" y1="417" x2="680" y2="702"/>
+      <line x1="780" y1="417" x2="780" y2="702"/>
+      <line x1="580" y1="488" x2="880" y2="488"/>
+      <line x1="580" y1="559" x2="880" y2="559"/>
+      <line x1="580" y1="631" x2="880" y2="631"/>
+    </g>
+  </g>
+</svg>

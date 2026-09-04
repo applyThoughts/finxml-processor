@@ -16,13 +16,13 @@
       <Button Content="Set active" Classes="accent" Command="{Binding SetActiveCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected.IsValid, FallbackValue=False}" />
       <Button Content="Open profiles folder" Command="{Binding RevealFolderCommand}" />
     </StackPanel>
-    <DataGrid Grid.Row="3" ItemsSource="{Binding Profiles}" SelectedItem="{Binding Selected}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" AutomationProperties.Name="Installed profiles">
+    <DataGrid Grid.Row="3" ItemsSource="{Binding Profiles}" SelectedItem="{Binding Selected}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" HorizontalScrollBarVisibility="Auto" AutomationProperties.Name="Installed profiles">
       <DataGrid.Columns>
-        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:ProfileRowViewModel" Width="100" />
-        <DataGridTextColumn Header="Id" Binding="{Binding Id}" x:DataType="vm:ProfileRowViewModel" Width="180" />
+        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:ProfileRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Id" Binding="{Binding Id}" x:DataType="vm:ProfileRowViewModel" Width="Auto" />
         <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}" x:DataType="vm:ProfileRowViewModel" Width="*" />
-        <DataGridTextColumn Header="Version" Binding="{Binding Version}" x:DataType="vm:ProfileRowViewModel" Width="80" />
-        <DataGridTextColumn Header="File" Binding="{Binding FileName}" x:DataType="vm:ProfileRowViewModel" Width="200" />
+        <DataGridTextColumn Header="Version" Binding="{Binding Version}" x:DataType="vm:ProfileRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="File" Binding="{Binding FileName}" x:DataType="vm:ProfileRowViewModel" Width="Auto" />
       </DataGrid.Columns>
     </DataGrid>
     <Border Grid.Row="4" Classes="card" Margin="0,12,0,0" IsVisible="{Binding Selected, Converter={x:Static ObjectConverters.IsNotNull}}">

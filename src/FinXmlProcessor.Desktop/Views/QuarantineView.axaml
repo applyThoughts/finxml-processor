@@ -15,11 +15,11 @@
       <Button Content="Restore to input folder" Command="{Binding RestoreCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected.HasCopy, FallbackValue=False}" />
       <Button Content="Delete…" Command="{Binding DeleteCommand}" CommandParameter="{Binding Selected}" IsEnabled="{Binding Selected, Converter={x:Static ObjectConverters.IsNotNull}}" />
     </StackPanel>
-    <DataGrid Grid.Row="3" ItemsSource="{Binding Entries}" SelectedItem="{Binding Selected}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" AutomationProperties.Name="Quarantined inputs">
+    <DataGrid Grid.Row="3" ItemsSource="{Binding Entries}" SelectedItem="{Binding Selected}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" HorizontalScrollBarVisibility="Auto" AutomationProperties.Name="Quarantined inputs">
       <DataGrid.Columns>
-        <DataGridTextColumn Header="When" Binding="{Binding When}" x:DataType="vm:QuarantineRowViewModel" Width="140" />
-        <DataGridTextColumn Header="File" Binding="{Binding FileName}" x:DataType="vm:QuarantineRowViewModel" Width="220" />
-        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:QuarantineRowViewModel" Width="100" />
+        <DataGridTextColumn Header="When" Binding="{Binding When}" x:DataType="vm:QuarantineRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="File" Binding="{Binding FileName}" x:DataType="vm:QuarantineRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:QuarantineRowViewModel" Width="Auto" />
         <DataGridTextColumn Header="Reason" Binding="{Binding Reason}" x:DataType="vm:QuarantineRowViewModel" Width="*" />
       </DataGrid.Columns>
     </DataGrid>

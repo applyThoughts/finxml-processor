@@ -1,3 +1,5 @@
+<p align="center"><img src="scripts/branding/logo.svg" alt="FinXml Processor logo" width="128" height="128"></p>
+
 # FinXml Processor
 
 A macOS desktop utility (with a headless worker) that turns large daily fintech XML files into clean Excel workbooks

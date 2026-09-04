@@ -40,3 +40,6 @@ appsettings.Local.json
 
 # Windows
 Thumbs.db
+
+# Local development data folder used by scripts/windows/dev.ps1
+.dev-home/

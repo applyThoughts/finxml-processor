@@ -14,18 +14,18 @@
       <Button Content="Show report file" Command="{Binding RevealReportCommand}" CommandParameter="{Binding SelectedJob}" IsEnabled="{Binding SelectedJob.HasReport, FallbackValue=False}" />
       <Button Content="Rerun…" Command="{Binding RerunCommand}" CommandParameter="{Binding SelectedJob}" IsEnabled="{Binding SelectedJob.CanRerun, FallbackValue=False}" />
     </StackPanel>
-    <DataGrid Grid.Row="3" ItemsSource="{Binding Jobs}" SelectedItem="{Binding SelectedJob}" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="True" CanUserReorderColumns="True" GridLinesVisibility="Horizontal" AutomationProperties.Name="Job history">
+    <DataGrid Grid.Row="3" ItemsSource="{Binding Jobs}" SelectedItem="{Binding SelectedJob}" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="True" CanUserReorderColumns="True" CanUserResizeColumns="True" GridLinesVisibility="Horizontal" HorizontalScrollBarVisibility="Auto" AutomationProperties.Name="Job history">
       <DataGrid.Columns>
-        <DataGridTextColumn Header="Created" Binding="{Binding Created}" x:DataType="vm:JobRowViewModel" Width="150" />
-        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:JobRowViewModel" Width="170" />
-        <DataGridTextColumn Header="Source file" Binding="{Binding Source}" x:DataType="vm:JobRowViewModel" Width="*" />
-        <DataGridTextColumn Header="Trigger" Binding="{Binding Trigger}" x:DataType="vm:JobRowViewModel" Width="90" />
-        <DataGridTextColumn Header="Seen" Binding="{Binding Seen}" x:DataType="vm:JobRowViewModel" Width="80" />
-        <DataGridTextColumn Header="Accepted" Binding="{Binding Accepted}" x:DataType="vm:JobRowViewModel" Width="90" />
-        <DataGridTextColumn Header="Rejected" Binding="{Binding Rejected}" x:DataType="vm:JobRowViewModel" Width="90" />
-        <DataGridTextColumn Header="Dupes" Binding="{Binding Duplicates}" x:DataType="vm:JobRowViewModel" Width="70" />
-        <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" x:DataType="vm:JobRowViewModel" Width="80" />
-        <DataGridTextColumn Header="Job" Binding="{Binding ShortId}" x:DataType="vm:JobRowViewModel" Width="90" />
+        <DataGridTextColumn Header="Created" Binding="{Binding Created}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Status" Binding="{Binding Status}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Source file" Binding="{Binding Source}" x:DataType="vm:JobRowViewModel" Width="*" MinWidth="140" />
+        <DataGridTextColumn Header="Trigger" Binding="{Binding Trigger}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Seen" Binding="{Binding Seen}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Accepted" Binding="{Binding Accepted}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Rejected" Binding="{Binding Rejected}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Dupes" Binding="{Binding Duplicates}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" x:DataType="vm:JobRowViewModel" Width="Auto" />
+        <DataGridTextColumn Header="Job" Binding="{Binding ShortId}" x:DataType="vm:JobRowViewModel" Width="Auto" />
       </DataGrid.Columns>
     </DataGrid>
     <Border Grid.Row="4" Classes="card" Margin="0,12,0,0" IsVisible="{Binding SelectedReportText, Converter={x:Static ObjectConverters.IsNotNull}}">
